@@ -1,0 +1,1735 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>蟒蛇们 | Bi0x</title><meta name="description" content="蟒蛇们"><meta name="keywords" content="Python"><meta name="author" content="Bi0x,bi0x@foxmail.com"><meta name="copyright" content="Bi0x"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon1.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="蟒蛇们"><meta name="twitter:description" content="蟒蛇们"><meta name="twitter:image" content="http://www.bi0x.cn/images/pasted-37.png"><meta property="og:type" content="article"><meta property="og:title" content="蟒蛇们"><meta property="og:url" content="http://www.bi0x.cn/2020/04/13/python1/"><meta property="og:site_name" content="Bi0x"><meta property="og:description" content="蟒蛇们"><meta property="og:image" content="http://www.bi0x.cn/images/pasted-37.png"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      now = new Date();
+      hour = now.getHours();
+      isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><link rel="canonical" href="http://www.bi0x.cn/2020/04/13/python1/"><link rel="next" title="逆...逆不出来了" href="http://www.bi0x.cn/2020/04/02/reverse1/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://www.bi0x.cn/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    title: 'Snackbar.bookmark.title',
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: {"bookmark":{"title":"Snackbar.bookmark.title","message_prev":"按","message_next":"键将本页加入书签"},"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-left"},
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: false,
+  isFontAwesomeV5: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false
+}</script><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">5</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">4</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 小伙伴</span></a></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#正则表达式"><span class="toc-number">1.</span> <span class="toc-text">正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-中正则表达式的基本使用"><span class="toc-number">1.1.</span> <span class="toc-text">Python 中正则表达式的基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对正则表达式匹配内容分组"><span class="toc-number">1.2.</span> <span class="toc-text">对正则表达式匹配内容分组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用管道匹配多个分组"><span class="toc-number">1.3.</span> <span class="toc-text">用管道匹配多个分组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用问号进行可选匹配"><span class="toc-number">1.4.</span> <span class="toc-text">使用问号进行可选匹配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用星号匹配零次或者多次"><span class="toc-number">1.5.</span> <span class="toc-text">使用星号匹配零次或者多次</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用加号匹配一次或者多次"><span class="toc-number">1.6.</span> <span class="toc-text">用加号匹配一次或者多次</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用花括号匹配指定次数"><span class="toc-number">1.7.</span> <span class="toc-text">用花括号匹配指定次数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#匹配所有符合的字符串"><span class="toc-number">1.8.</span> <span class="toc-text">匹配所有符合的字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符分类"><span class="toc-number">1.9.</span> <span class="toc-text">字符分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入字符和美元字符"><span class="toc-number">1.10.</span> <span class="toc-text">插入字符和美元字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通配字符"><span class="toc-number">1.11.</span> <span class="toc-text">通配字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用点和星匹配所有字符"><span class="toc-number">1.12.</span> <span class="toc-text">用点和星匹配所有字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#忽略大小写的匹配"><span class="toc-number">1.13.</span> <span class="toc-text">忽略大小写的匹配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用-sub-方法替换字符串"><span class="toc-number">1.14.</span> <span class="toc-text">用 sub() 方法替换字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复杂的正则表达式的优化"><span class="toc-number">1.15.</span> <span class="toc-text">复杂的正则表达式的优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多种规则的组合使用"><span class="toc-number">1.16.</span> <span class="toc-text">多种规则的组合使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文件读写"><span class="toc-number">2.</span> <span class="toc-text">文件读写</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#os-path-库"><span class="toc-number">2.1.</span> <span class="toc-text">os.path 库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#当前工作目录"><span class="toc-number">2.1.1.</span> <span class="toc-text">当前工作目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建新的文件夹"><span class="toc-number">2.1.2.</span> <span class="toc-text">创建新的文件夹</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#列出给定路径下的所有文件"><span class="toc-number">2.2.</span> <span class="toc-text">列出给定路径下的所有文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#路径处理"><span class="toc-number">2.2.1.</span> <span class="toc-text">路径处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件处理"><span class="toc-number">2.3.</span> <span class="toc-text">文件处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#File-对象的成员方法"><span class="toc-number">2.3.1.</span> <span class="toc-text">File 对象的成员方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shelve-模块"><span class="toc-number">2.4.</span> <span class="toc-text">shelve 模块</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#组织文件"><span class="toc-number">3.</span> <span class="toc-text">组织文件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#shutil-模块"><span class="toc-number">3.1.</span> <span class="toc-text">shutil 模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#复制文件和文件夹"><span class="toc-number">3.1.1.</span> <span class="toc-text">复制文件和文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件和文件夹的移动和重命名"><span class="toc-number">3.1.2.</span> <span class="toc-text">文件和文件夹的移动和重命名</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#永久删除文件和文件夹"><span class="toc-number">3.2.</span> <span class="toc-text">永久删除文件和文件夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#send2trash-模块"><span class="toc-number">3.3.</span> <span class="toc-text">send2trash 模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#os-模块遍历文件夹"><span class="toc-number">3.4.</span> <span class="toc-text">os 模块遍历文件夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zipfile-模块"><span class="toc-number">3.5.</span> <span class="toc-text">zipfile 模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解压缩所有文件"><span class="toc-number">3.5.1.</span> <span class="toc-text">解压缩所有文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建和添加到-zip-文件"><span class="toc-number">3.5.2.</span> <span class="toc-text">创建和添加到 zip 文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#异常处理"><span class="toc-number">4.</span> <span class="toc-text">异常处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#trackback-模块"><span class="toc-number">4.1.</span> <span class="toc-text">trackback 模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#断言"><span class="toc-number">4.2.</span> <span class="toc-text">断言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#logging-日志模块"><span class="toc-number">4.3.</span> <span class="toc-text">logging 日志模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#日志级别"><span class="toc-number">4.3.1.</span> <span class="toc-text">日志级别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将日志记录到文件"><span class="toc-number">4.3.2.</span> <span class="toc-text">将日志记录到文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#抓取-Web-信息"><span class="toc-number">5.</span> <span class="toc-text">抓取 Web 信息</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#webbrowser-模块"><span class="toc-number">5.1.</span> <span class="toc-text">webbrowser 模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#requests-模块"><span class="toc-number">5.2.</span> <span class="toc-text">requests 模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#错误检查"><span class="toc-number">5.2.1.</span> <span class="toc-text">错误检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#保存下载的文件"><span class="toc-number">5.2.2.</span> <span class="toc-text">保存下载的文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#post-方法"><span class="toc-number">5.2.3.</span> <span class="toc-text">post() 方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BeatuifulSoup-模块"><span class="toc-number">5.3.</span> <span class="toc-text">BeatuifulSoup 模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#select-方法寻找元素"><span class="toc-number">5.3.1.</span> <span class="toc-text">select() 方法寻找元素</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#处理-Excel"><span class="toc-number">6.</span> <span class="toc-text">处理 Excel</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#openpyxl-模块打开-Excel-文档"><span class="toc-number">6.1.</span> <span class="toc-text">openpyxl 模块打开 Excel 文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取所有表名"><span class="toc-number">6.2.</span> <span class="toc-text">获取所有表名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取单元格信息"><span class="toc-number">6.3.</span> <span class="toc-text">获取单元格信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#列字母和数字键的转换"><span class="toc-number">6.4.</span> <span class="toc-text">列字母和数字键的转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从表中取得行和列"><span class="toc-number">6.5.</span> <span class="toc-text">从表中取得行和列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建和写入-Excel-文档"><span class="toc-number">6.6.</span> <span class="toc-text">创建和写入 Excel 文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建和删除工作表"><span class="toc-number">6.7.</span> <span class="toc-text">创建和删除工作表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置单元格字体风格"><span class="toc-number">6.8.</span> <span class="toc-text">设置单元格字体风格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Font-对象"><span class="toc-number">6.9.</span> <span class="toc-text">Font 对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#公式"><span class="toc-number">6.10.</span> <span class="toc-text">公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#行列的调整"><span class="toc-number">6.11.</span> <span class="toc-text">行列的调整</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#冻结窗格"><span class="toc-number">6.12.</span> <span class="toc-text">冻结窗格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图表"><span class="toc-number">6.13.</span> <span class="toc-text">图表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-对象"><span class="toc-number">6.14.</span> <span class="toc-text">Reference 对象</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#处理-CSV"><span class="toc-number">7.</span> <span class="toc-text">处理 CSV</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSV-文件"><span class="toc-number">7.1.</span> <span class="toc-text">CSV 文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reader-对象"><span class="toc-number">7.2.</span> <span class="toc-text">Reader 对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Writer-对象"><span class="toc-number">7.3.</span> <span class="toc-text">Writer 对象</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#处理-Json"><span class="toc-number">8.</span> <span class="toc-text">处理 Json</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#loads-读取-JSON"><span class="toc-number">8.1.</span> <span class="toc-text">loads() 读取 JSON</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dumps-导出-JSON"><span class="toc-number">8.2.</span> <span class="toc-text">dumps 导出 JSON</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#时间与计划任务"><span class="toc-number">9.</span> <span class="toc-text">时间与计划任务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#time-模块"><span class="toc-number">9.1.</span> <span class="toc-text">time 模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Unix-纪元时间戳函数-time"><span class="toc-number">9.1.1.</span> <span class="toc-text">Unix 纪元时间戳函数 time()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#延时函数-sleep"><span class="toc-number">9.1.2.</span> <span class="toc-text">延时函数 sleep()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#datetime-模块"><span class="toc-number">9.2.</span> <span class="toc-text">datetime 模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#datetime-对象转为字符串"><span class="toc-number">9.2.1.</span> <span class="toc-text">datetime 对象转为字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串转为-datatime-对象"><span class="toc-number">9.2.2.</span> <span class="toc-text">字符串转为 datatime 对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#timedelta-数据类型"><span class="toc-number">9.2.3.</span> <span class="toc-text">timedelta 数据类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多线程-threading-模块"><span class="toc-number">9.3.</span> <span class="toc-text">多线程 threading 模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建新的线程"><span class="toc-number">9.3.1.</span> <span class="toc-text">创建新的线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#等待所有线程结束"><span class="toc-number">9.3.2.</span> <span class="toc-text">等待所有线程结束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subprocess-模块启动其他应用程序"><span class="toc-number">9.3.3.</span> <span class="toc-text">subprocess 模块启动其他应用程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#向-Popen-传递命令行参数"><span class="toc-number">9.3.4.</span> <span class="toc-text">向 Popen() 传递命令行参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用默认应用程序打开文件"><span class="toc-number">9.3.5.</span> <span class="toc-text">用默认应用程序打开文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#处理电子邮件"><span class="toc-number">10.</span> <span class="toc-text">处理电子邮件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#smtplib-发送电子邮件"><span class="toc-number">10.1.</span> <span class="toc-text">smtplib 发送电子邮件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#测试对象是否连接成功"><span class="toc-number">10.1.1.</span> <span class="toc-text">测试对象是否连接成功</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动-TLS-加密"><span class="toc-number">10.1.2.</span> <span class="toc-text">启动 TLS 加密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#登陆-SMTP-服务器"><span class="toc-number">10.1.3.</span> <span class="toc-text">登陆 SMTP 服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发送电子邮件"><span class="toc-number">10.1.4.</span> <span class="toc-text">发送电子邮件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#断开连接"><span class="toc-number">10.1.5.</span> <span class="toc-text">断开连接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#imapclient-和-pyzmail"><span class="toc-number">10.2.</span> <span class="toc-text">imapclient 和 pyzmail</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#连接到-IMAP-服务"><span class="toc-number">10.2.1.</span> <span class="toc-text">连接到 IMAP 服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#登陆到-IMAP-服务器"><span class="toc-number">10.2.2.</span> <span class="toc-text">登陆到 IMAP 服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择文件夹"><span class="toc-number">10.2.3.</span> <span class="toc-text">选择文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#搜索邮件"><span class="toc-number">10.2.4.</span> <span class="toc-text">搜索邮件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大小限制"><span class="toc-number">10.2.5.</span> <span class="toc-text">大小限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取电子邮件内容"><span class="toc-number">10.2.6.</span> <span class="toc-text">获取电子邮件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#借助-pyzmail-解析邮件信息"><span class="toc-number">10.2.7.</span> <span class="toc-text">借助 pyzmail 解析邮件信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除电子邮件"><span class="toc-number">10.2.8.</span> <span class="toc-text">删除电子邮件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从-IMAP-服务器断开"><span class="toc-number">10.2.9.</span> <span class="toc-text">从 IMAP 服务器断开</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#键鼠自动化-Pyautogui"><span class="toc-number">11.</span> <span class="toc-text">键鼠自动化 Pyautogui</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#模块安装"><span class="toc-number">11.1.</span> <span class="toc-text">模块安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#暂停和自动防故障"><span class="toc-number">11.2.</span> <span class="toc-text">暂停和自动防故障</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#控制鼠标移动"><span class="toc-number">11.3.</span> <span class="toc-text">控制鼠标移动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#移动鼠标"><span class="toc-number">11.3.1.</span> <span class="toc-text">移动鼠标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取鼠标位置"><span class="toc-number">11.3.2.</span> <span class="toc-text">获取鼠标位置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#控制鼠标交互"><span class="toc-number">11.4.</span> <span class="toc-text">控制鼠标交互</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#拖动鼠标"><span class="toc-number">11.4.1.</span> <span class="toc-text">拖动鼠标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#滚动鼠标"><span class="toc-number">11.4.2.</span> <span class="toc-text">滚动鼠标</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#处理屏幕"><span class="toc-number">11.5.</span> <span class="toc-text">处理屏幕</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取屏幕截图"><span class="toc-number">11.5.1.</span> <span class="toc-text">获取屏幕截图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析屏幕快照"><span class="toc-number">11.5.2.</span> <span class="toc-text">分析屏幕快照</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图像识别"><span class="toc-number">11.6.</span> <span class="toc-text">图像识别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#控制键盘"><span class="toc-number">11.7.</span> <span class="toc-text">控制键盘</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#键盘组合"><span class="toc-number">11.7.1.</span> <span class="toc-text">键盘组合</span></a></li></ol></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(/images/pasted-37.png)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">Bi0x</a></span><span class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 小伙伴</span></a></div></div></span></div><div id="post-info"><div id="post-title"><div class="posttitle">蟒蛇们</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2020-04-13<span class="post-meta__separator">|</span><i class="fa fa-history" aria-hidden="true"></i> 更新于 2020-04-13</time><span class="post-meta__separator">|</span><span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Development/">Development</a></span><div class="post-meta-wordcount"><i class="post-meta__icon fa fa-file-word-o" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">11.4k</span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-clock-o" aria-hidden="true"></i><span>阅读时长: 44 分钟</span><div class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="/2020/04/13/python1/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2020/04/13/python1/" itemprop="commentCount"></span></a></div></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><ul>
+<li>正则表达式通常用来实现文本匹配功能</li>
+<li>例如需要一个类似 415-555-4242 的电话号码查找，使用自定义函数需要编写的代码就相对较多</li>
+<li>而使用正则表达式 “\d\d\d-\d\d\d-\d\d\d\d” 或者 “\d{3}-\d{3}-\d{3}” 也可以很轻松的进行匹配</li>
+</ul>
+<h2 id="Python-中正则表达式的基本使用"><a href="#Python-中正则表达式的基本使用" class="headerlink" title="Python 中正则表达式的基本使用"></a>Python 中正则表达式的基本使用</h2><ul>
+<li>Python 中所有正则表达式的函数都在模块 re 中</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建一个正则表达式对象 phoneRegex<ul>
+<li>需要注意的是，匹配的正则表达式如果不以原始字符串传入的话，需要对反斜杠使用转义字符</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">phoneRegex = re.compile(<span class="string">r'\d\d\d-\d\d\d-\d\d\d\d'</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>进行匹配，并得到一个结果对象<ul>
+<li><strong>这种搜寻方式只会搜寻到第一个匹配的结果</strong></li>
+<li><strong>如果需要全部的匹配结果，使用 findall(str1) 方法</strong></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mo = phoneRegex.search(<span class="string">'My number is 415-555-4242.'</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查找到的结果会保存在变量 mo 中</li>
+<li>对变量 mo 使用成员方法 group()，可以返回匹配的结果</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(mo.group())</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出如下</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">415-555-4242</span><br></pre></td></tr></table></figure>
+<h2 id="对正则表达式匹配内容分组"><a href="#对正则表达式匹配内容分组" class="headerlink" title="对正则表达式匹配内容分组"></a>对正则表达式匹配内容分组</h2><ul>
+<li>利用括号可以对正则表达式中匹配的内容进行分组<ul>
+<li>此时使用成员方法 group() 时，不传入参数或传入 0，得到的结果仍然是匹配到的值</li>
+<li>传入参数 1，则为匹配的到内容中，第一个括号里的内容，往后同理</li>
+<li>使用成员方法 groups()，会得到一个匹配到的元组</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">phoneRegex = re.compile(<span class="string">r'(\d\d\d)-(\d\d\d-\d\d\d\d)'</span>)</span><br><span class="line">mo = phoneRegex.search(<span class="string">'My number is 415-555-4242.'</span>)</span><br><span class="line">print(mo.groups())</span><br><span class="line">print(mo.group() + <span class="string">' '</span> + mo.group(<span class="number">1</span>) + <span class="string">' '</span> + mo.group(<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出内容如下</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">('415', '555-4242')</span><br><span class="line">415-555-4242 415 555-4242</span><br></pre></td></tr></table></figure>
+<h2 id="用管道匹配多个分组"><a href="#用管道匹配多个分组" class="headerlink" title="用管道匹配多个分组"></a>用管道匹配多个分组</h2><ul>
+<li>管道其实就是 “|”，这翻译真是逗死..</li>
+<li>比如需要匹配到字符串 “aaa” 或者 “bbb” 其中之一</li>
+<li>写法如下，匹配到第一个符合的文本</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">heroRegex = re.compile (<span class="string">r'Batman|Tina Fey'</span>)</span><br><span class="line">mo1 = heroRegex.search(<span class="string">'Batman and Tina Fey.'</span>)</span><br><span class="line">print(mo1.group())</span><br><span class="line">mo2 = heroRegex.search(<span class="string">'Tina Fey and Batman.'</span>)</span><br><span class="line">print(mo2.group())</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出如下</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Batman</span><br><span class="line">Tina Fey</span><br></pre></td></tr></table></figure>
+<ul>
+<li>还可以用括号来实现匹配前缀相同但是后问不同的字符串</li>
+<li>代码如下</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">tmpRegex = re.compile(<span class="string">r'Bat(man|mobile|copter|bat)'</span>)</span><br><span class="line">mo = tmpRegex.search(<span class="string">'Batmobile lost a wheel'</span>)</span><br><span class="line">print(mo.group())</span><br><span class="line">print(mo.group(<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出如下</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Batmobile</span><br><span class="line">mobile</span><br></pre></td></tr></table></figure>
+<ul>
+<li>其中不给成员函数 group() 传值的时候，其输出为查找到的字符出<ul>
+<li>如果传值 1，即 group(1) 的时候，其输出的为匹配的后缀</li>
+</ul>
+</li>
+</ul>
+<h2 id="使用问号进行可选匹配"><a href="#使用问号进行可选匹配" class="headerlink" title="使用问号进行可选匹配"></a>使用问号进行可选匹配</h2><ul>
+<li>问号表示此内容为可选内容</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">batRegex = re.compile(<span class="string">r'Bat(wo)?man'</span>)</span><br><span class="line">mo1 = batRegex.search(<span class="string">'The Adventures of Batman'</span>)</span><br><span class="line">print(mo1.group())</span><br><span class="line">mo2 = batRegex.search(<span class="string">'The Adventures of Batwoman'</span>)</span><br><span class="line">print(mo2.group())</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出如下</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Batman</span><br><span class="line">Batwoman</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>如果真正需要匹配到问号的话，使用转义字符即可</strong></li>
+</ul>
+<h2 id="使用星号匹配零次或者多次"><a href="#使用星号匹配零次或者多次" class="headerlink" title="使用星号匹配零次或者多次"></a>使用星号匹配零次或者多次</h2><ul>
+<li>星号表示此内容可以没有，可以有，还可以出现多次</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">batRegex = re.compile(<span class="string">r'Bat(wo)*man'</span>)</span><br><span class="line">mo1 = batRegex.search(<span class="string">'The Adventures of Batman'</span>)</span><br><span class="line">print(mo1.group())</span><br><span class="line">mo2 = batRegex.search(<span class="string">'The Adventures of Batwoman'</span>)</span><br><span class="line">print(mo2.group())</span><br><span class="line">mo3 = batRegex.search(<span class="string">'The Adventures of Batwowowowoman'</span>)</span><br><span class="line">print(mo3.group())</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出如下</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Batman</span><br><span class="line">Batwoman</span><br><span class="line">Batwowowowoman</span><br></pre></td></tr></table></figure>
+<h2 id="用加号匹配一次或者多次"><a href="#用加号匹配一次或者多次" class="headerlink" title="用加号匹配一次或者多次"></a>用加号匹配一次或者多次</h2><ul>
+<li>星号表示此内容可以有，还可以出现多次<ul>
+<li><strong>但是不可以没有</strong></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">batRegex = re.compile(<span class="string">r'Bat(wo)+man'</span>)</span><br><span class="line">mo1 = batRegex.search(<span class="string">'The Adventures of Batman'</span>)</span><br><span class="line">print(mo1 == <span class="literal">None</span>)</span><br><span class="line">mo2 = batRegex.search(<span class="string">'The Adventures of Batwoman'</span>)</span><br><span class="line">print(mo2.group())</span><br><span class="line">mo3 = batRegex.search(<span class="string">'The Adventures of Batwowowowoman'</span>)</span><br><span class="line">print(mo3.group())</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出如下</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">True</span></span><br><span class="line">Batwoman</span><br><span class="line">Batwowowowoman</span><br></pre></td></tr></table></figure>
+<h2 id="用花括号匹配指定次数"><a href="#用花括号匹配指定次数" class="headerlink" title="用花括号匹配指定次数"></a>用花括号匹配指定次数</h2><ul>
+<li>用于匹配指定次数的指定内容，或者匹配某一范围内的次数的指定内容</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">batRegex = re.compile(<span class="string">r'Bat(wo)&#123;4&#125;man'</span>)</span><br><span class="line">mo3 = batRegex.search(<span class="string">'The Adventures of Batwowowowoman'</span>)</span><br><span class="line">batRegex2 = re.compile(<span class="string">r'Bat(wo)&#123;3,5&#125;man'</span>)</span><br><span class="line">mo4 = batRegex.search(<span class="string">'The Adventures of Batwowowowoman'</span>)</span><br><span class="line">print(mo3.group())</span><br><span class="line">print(mo4.group())</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出如下</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Batwowowowoman</span><br><span class="line">Batwowowowoman</span><br></pre></td></tr></table></figure>
+<ul>
+<li>也可以匹配大于多少次，或者少于多少次的符合正则的字符串<ul>
+<li>写法类似 {3,} 和 {,5}</li>
+</ul>
+</li>
+</ul>
+<h2 id="匹配所有符合的字符串"><a href="#匹配所有符合的字符串" class="headerlink" title="匹配所有符合的字符串"></a>匹配所有符合的字符串</h2><ul>
+<li>使用成员方法 findall() 可以匹配所有符合正则表达式的字符串</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">phoneRegex = re.compile(<span class="string">r'\d\d\d-\d\d\d-\d\d\d\d'</span>)</span><br><span class="line">print(phoneRegex.findall(<span class="string">'Cell: 415-555-9999 Work: 212-555-0000'</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出如下</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">['415-555-9999', '212-555-0000']</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果 findall() 使用在一个有分组的正则表达式上，则将返回一个字符串的元组列表</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">phoneRegex = re.compile(<span class="string">r'(\d\d\d)-(\d\d\d)-(\d\d\d\d)'</span>)</span><br><span class="line">print(phoneRegex.findall(<span class="string">'Cell: 415-555-9999 Work: 212-555-0000'</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出如下</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[('415', '555', '9999'), ('212', '555', '0000')]</span><br></pre></td></tr></table></figure>
+<h2 id="字符分类"><a href="#字符分类" class="headerlink" title="字符分类"></a>字符分类</h2><ul>
+<li>正则表达式的一些规定</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>缩写字符分类</th>
+<th>表示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\d</td>
+<td>0 ~ 9</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>除 0 ~ 9 外的任何字符</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>任何字母、数字或者下划线</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>除字母、数字和下划线外的任何字符</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>空格、制表符或者换行符（相当于”空白”字符）</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>除空格、制表符和换行符外的任何字符</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>对于需要某一段的数字或者字符，可以用方括号来表示区间<ul>
+<li>需要数字 0~5: [0-5]</li>
+<li>匹配元音字符，无论大小写: [aeiouAEIOU]</li>
+<li>匹配除元音字符外的所有其他字符: [^aeiouAEIOU]</li>
+</ul>
+</li>
+<li>在方括号内，普通的正则表达式符号不会被解释<ul>
+<li>这意味着，你不需 要前面加上倒斜杠转义.、*、? 或 () 字符。</li>
+<li>例如，字符分类将匹配数字 0 到 5 和一个 句点。你不需要将它写成 [0-5\.]。</li>
+</ul>
+</li>
+</ul>
+<h2 id="插入字符和美元字符"><a href="#插入字符和美元字符" class="headerlink" title="插入字符和美元字符"></a>插入字符和美元字符</h2><ul>
+<li>使用插入字符 “^” 表示此匹配必须发生在文本开始处</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">beginsWithHello = re.compile(<span class="string">r'^Hello'</span>)</span><br><span class="line">print(beginsWithHello.search(<span class="string">'aaaaa Hello'</span>))</span><br><span class="line">print(beginsWithHello.search(<span class="string">'Hello aaaa'</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出如下</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">None</span><br><span class="line">&lt;re.Match object; span=(0, 5), match='Hello'&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用美元字符 “$” 表示必须发生在文本结束处</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">beginsWithHello = re.compile(<span class="string">r'Hello$'</span>)</span><br><span class="line">print(beginsWithHello.search(<span class="string">'aaaaa Hello'</span>))</span><br><span class="line">print(beginsWithHello.search(<span class="string">'Hello aaaa'</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出如下</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;re.Match object; span=(6, 11), match='Hello'&gt;</span><br><span class="line">None</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可以将二者搭配，表示匹配从头到尾完全符合要求的一串字符串</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">beginsWithHello = re.compile(<span class="string">r'^Hello$'</span>)</span><br><span class="line">print(beginsWithHello.search(<span class="string">'aaaaa Hello'</span>))</span><br><span class="line">print(beginsWithHello.search(<span class="string">'Hello aaaa'</span>))</span><br><span class="line">print(beginsWithHello.search(<span class="string">'Hello'</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出如下</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">None</span><br><span class="line">None</span><br><span class="line">&lt;re.Match object; span=(0, 5), match='Hello'&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="通配字符"><a href="#通配字符" class="headerlink" title="通配字符"></a>通配字符</h2><ul>
+<li>使用句点 “.” 表示匹配 <strong>除了换行符</strong> 外的所有字符</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">atRegex = re.compile(<span class="string">r'.at'</span>)</span><br><span class="line">print(atRegex.findall(<span class="string">'The cat in the hat sat on the flat mat.'</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出如下</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">['cat', 'hat', 'sat', 'lat', 'mat']</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果需要匹配句点的话，需要使用转义字符</li>
+<li>如果需要匹配换行符的话，将 re.DOTALL 作为 re.compile() 的第二个参数就行</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">noNewlineRegex = re.compile(<span class="string">'.*'</span>)</span><br><span class="line">print(noNewlineRegex.search(<span class="string">'Serve the public trust.\nProtect the innocent.\nUphold the law.'</span>).group())</span><br><span class="line">newlineRegex = re.compile(<span class="string">'.*'</span>, re.DOTALL)</span><br><span class="line">print(newlineRegex.search(<span class="string">'Serve the public trust.\nProtect the innocent.\nUphold the law.'</span>).group())</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出如下 </li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Serve the public trust.</span><br><span class="line">Serve the public trust.</span><br><span class="line">Protect the innocent.</span><br><span class="line">Uphold the law.</span><br></pre></td></tr></table></figure>
+<h2 id="用点和星匹配所有字符"><a href="#用点和星匹配所有字符" class="headerlink" title="用点和星匹配所有字符"></a>用点和星匹配所有字符</h2><ul>
+<li>可以借助点和星的组合匹配字符串中某一块所有需要的字符<ul>
+<li>其匹配方式为贪心匹配，即往多了匹配</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">nameRegex = re.compile(<span class="string">r'First Name: (.*) Last Name: (.*)'</span>)</span><br><span class="line">mo = nameRegex.search(<span class="string">'First Name: Al Last Name: Sweigart'</span>)</span><br><span class="line">print(mo.group(<span class="number">1</span>) + <span class="string">' '</span> + mo.group(<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出如下</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Al Sweigart</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果需要非贪心匹配的话，可以加上问号，往少了匹配</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">nongreedyRegex = re.compile(<span class="string">r'&lt;.*?&gt;'</span>)</span><br><span class="line">mo = nongreedyRegex.search(<span class="string">'&lt;To serve man&gt; for dinner.&gt;'</span>)</span><br><span class="line">print(mo.group())</span><br><span class="line"></span><br><span class="line">greedyRegex = re.compile(<span class="string">r'&lt;.*&gt;'</span>)</span><br><span class="line">mo = greedyRegex.search(<span class="string">'&lt;To serve man&gt; for dinner.&gt;'</span>)</span><br><span class="line">print(mo.group())</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出如下</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;To serve man&gt;</span><br><span class="line">&lt;To serve man&gt; for dinner.&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="忽略大小写的匹配"><a href="#忽略大小写的匹配" class="headerlink" title="忽略大小写的匹配"></a>忽略大小写的匹配</h2><ul>
+<li>将 re.I 或者 re.IGNORECASE 作为 re.compile() 的第二个参数后进行匹配就行</li>
+</ul>
+<h2 id="用-sub-方法替换字符串"><a href="#用-sub-方法替换字符串" class="headerlink" title="用 sub() 方法替换字符串"></a>用 sub() 方法替换字符串</h2><ul>
+<li>将匹配到的字符替换成所需要的字符</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">namesRegex = re.compile(<span class="string">r'Agent \w+'</span>) </span><br><span class="line">print(namesRegex.sub(<span class="string">'CENSORED'</span>, <span class="string">'Agent Alice gave the secret documents to Agent Bob.'</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出如下</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CENSORED gave the secret documents to CENSORED.</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可以使用 \1、\2、\3 等来表示匹配到的内容中第一个括号中的内容</li>
+<li>例如需要隐去下文中的 Agent，并只显示人名的首字母，可以这么写</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">agentNamesRegex = re.compile(<span class="string">r'Agent (\w)\w*'</span>)</span><br><span class="line">print(agentNamesRegex.sub(<span class="string">r'\1****'</span>, <span class="string">'Agent Alice told Agent Carol that Agent Eve knew Agent Bob was a double agent.'</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出如下</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A**** told C**** that E**** knew B**** was a double agent.</span><br></pre></td></tr></table></figure>
+<h2 id="复杂的正则表达式的优化"><a href="#复杂的正则表达式的优化" class="headerlink" title="复杂的正则表达式的优化"></a>复杂的正则表达式的优化</h2><ul>
+<li>可以对成员方法 compile() 传入参数 re.VERBOSE 来让其忽略表达式中的空白字符和注释</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">phoneRegex = re.compile(<span class="string">r'((\d&#123;3&#125;|\(\d&#123;3&#125;\))?(\s|-|\.)?\d&#123;3&#125;(\s|-|\.)\d&#123;4&#125; (\s*(ext|x|ext.)\s*\d&#123;2,5&#125;)?)'</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可以写成</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">phoneRegex = re.compile(<span class="string">r'''(</span></span><br><span class="line"><span class="string">        (\d&#123;3&#125;|\(\d&#123;3&#125;\))?              # area code</span></span><br><span class="line"><span class="string">        (\s|-|\.)?                      # separator</span></span><br><span class="line"><span class="string">        \d&#123;3&#125;                           # first 3 digits    </span></span><br><span class="line"><span class="string">        (\s|-|\.)                       # separator    </span></span><br><span class="line"><span class="string">        \d&#123;4&#125;                           # last 4 digits    </span></span><br><span class="line"><span class="string">        (\s*(ext|x|ext.)\s*\d&#123;2,5&#125;)?    # extension    </span></span><br><span class="line"><span class="string">        )'''</span>, re.VERBOSE)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>注意需要用三重引号</li>
+</ul>
+<h2 id="多种规则的组合使用"><a href="#多种规则的组合使用" class="headerlink" title="多种规则的组合使用"></a>多种规则的组合使用</h2><ul>
+<li>对于同时需要使用  re.IGNORECASE、re.DOTALL 和 re.VERBOSE 可以使用位运算</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">someRegexValue = re.compile(<span class="string">'foo'</span>, re.IGNORECASE | re.DOTALL | re.VERBOSE)</span><br></pre></td></tr></table></figure>
+<h1 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h1><h2 id="os-path-库"><a href="#os-path-库" class="headerlink" title="os.path 库"></a>os.path 库</h2><ul>
+<li>文件夹名称和文件名在 Windows 和 OS X 上是不区分大小写的</li>
+<li><strong>但在 Linux 上是区分大小写的</strong></li>
+<li><p><a href="https://docs.python.org/zh-cn/3.7/library/os.path.html" target="_blank" rel="noopener">os.path 的文档</a></p>
+</li>
+<li><p>对于 os.path.join() 方法，在 Win 下其使用的是 “\\” 来连接 </p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">myFiles = [<span class="string">'accounts.txt'</span>, <span class="string">'details.csv'</span>, <span class="string">'invite.docx'</span>] </span><br><span class="line"><span class="keyword">for</span> filename <span class="keyword">in</span> myFiles:</span><br><span class="line">    print(os.path.join(<span class="string">'C:\\Users\\asweigart'</span>, filename))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\asweigart\accounts.txt</span><br><span class="line">C:\Users\asweigart\details.csv</span><br><span class="line">C:\Users\asweigart\invite.docx</span><br></pre></td></tr></table></figure>
+<ul>
+<li>而在 OS X 或者 Linux 下，其使用的是 “/“ 连接路径</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">print(os.path.join(<span class="string">'accounts'</span>, <span class="string">'details'</span>, <span class="string">'invite'</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">accounts/details/invite</span><br></pre></td></tr></table></figure>
+<h3 id="当前工作目录"><a href="#当前工作目录" class="headerlink" title="当前工作目录"></a>当前工作目录</h3><ul>
+<li>当前工作目录 Current working directory 缩写为 cwd</li>
+<li>因此在库 os 中，存在方法 getcwd()，用于获取当前的工作目录<ul>
+<li>也存在方法 chdir()，用于修改工作目录</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">print(os.getcwd())</span><br><span class="line">os.chdir(<span class="string">'D:\\'</span>)</span><br><span class="line">print(os.getcwd())</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c:\Users\ytx22\OneDrive\Codes\VSCode</span><br><span class="line">D:\</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果 chdir() 更换到的目录不存在，Python 会抛出异常<ul>
+<li>异常为 FileNotFoundError</li>
+</ul>
+</li>
+</ul>
+<h3 id="创建新的文件夹"><a href="#创建新的文件夹" class="headerlink" title="创建新的文件夹"></a>创建新的文件夹</h3><ul>
+<li>使用 os.makedirs() 可以创建新的文件夹</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    os.chdir(<span class="string">'D:\\test\\aaaaaaa'</span>)</span><br><span class="line"><span class="keyword">except</span> FileNotFoundError:</span><br><span class="line">    print(<span class="string">"DirDoesntExist"</span>)</span><br><span class="line">    os.makedirs(<span class="string">'D:\\test\\aaaaaaa'</span>)</span><br><span class="line">    os.chdir(<span class="string">'D:\\test\\aaaaaaa'</span>)</span><br><span class="line">print(os.getcwd())</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DirDoesntExist</span><br><span class="line">D:\test\aaaaaaa</span><br></pre></td></tr></table></figure>
+<h2 id="列出给定路径下的所有文件"><a href="#列出给定路径下的所有文件" class="headerlink" title="列出给定路径下的所有文件"></a>列出给定路径下的所有文件</h2><ul>
+<li>使用方法 os.listdir(‘路径’)</li>
+<li>返回一个文件名和文件夹名的列表</li>
+</ul>
+<h3 id="路径处理"><a href="#路径处理" class="headerlink" title="路径处理"></a>路径处理</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>作用</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>abspath(‘路径’)</td>
+<td>返回给定路径的绝对路径字符串</td>
+<td>给定路径的绝对路径字符串</td>
+</tr>
+<tr>
+<td>isabs(‘路径’)</td>
+<td>判断某一路径是否为绝对路径</td>
+<td>是返回 True，否则为 False</td>
+</tr>
+<tr>
+<td>relpath(‘终止路径’,[‘起始路径’])</td>
+<td>返回从起始路径到达终止路径的相对路径字符串（如果不填起始路径，则为当前路径）</td>
+<td>os.path.relpath(‘C:\\Windows’, ‘C:\\spam\\eggs’)<br /> 返回 “..\\\..\\\\Windows”</td>
+</tr>
+<tr>
+<td>dirname(‘路径’)</td>
+<td>返回此路径指向的文件或文件夹所在的文件夹</td>
+<td>最后一个斜杠前的整串字符串</td>
+</tr>
+<tr>
+<td>basename(‘路径’)</td>
+<td>返回此路径指向的文件或文件夹的具体名称</td>
+<td>最后一个斜杠后面的字符串</td>
+</tr>
+<tr>
+<td>split(‘路径’)</td>
+<td>返回一个元组，包含路径的 dirname 和 basename</td>
+<td>包含路径的 dirname 和 basename 的元组</td>
+</tr>
+<tr>
+<td>getsize(‘路径’)</td>
+<td>返回指定路径中文件的字节数</td>
+<td>指定路径文件的字节数<br />如果是文件夹返回的是4096</td>
+</tr>
+<tr>
+<td>join(‘路径’, ‘文件名’)</td>
+<td>返回连接好路径和文件名的字符串</td>
+<td>连接好路径和文件名的字符串</td>
+</tr>
+<tr>
+<td>exists(‘路径’)</td>
+<td>检查路径是否存在</td>
+<td>True 或 False</td>
+</tr>
+<tr>
+<td>isdir(‘路径’)</td>
+<td>检查路径是否为文件夹</td>
+<td>True 或 False</td>
+</tr>
+<tr>
+<td>isfile(‘路径’)</td>
+<td>检查路径是否为文件</td>
+<td>True 或 False</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>如果需要将路径的每一块文件或者文件夹分离出来，使用 str1.split(os.path.seq)<ul>
+<li>OS X 和 Linux 上这么用的话返回值下标 0 的元素是空的</li>
+</ul>
+</li>
+<li>exists 经常用来检测 U 盘是否连接</li>
+</ul>
+<h2 id="文件处理"><a href="#文件处理" class="headerlink" title="文件处理"></a>文件处理</h2><ul>
+<li>使用 open(‘路径’, ‘参数’) 来打开文件，并返回一个 File 对象<ul>
+<li>如果路径对应的文件不存在，在写模式和添加模式下则会新建一个文件</li>
+</ul>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>以只读方式打开文件。文件的指针将会放在文件的开头。这是默认模式。</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r</td>
+<td>以只读方式打开文件。文件的指针将会放在文件的开头。这是默认模式。</td>
+</tr>
+<tr>
+<td>rb</td>
+<td>以二进制格式打开一个文件用于只读。文件指针将会放在文件的开头。这是默认模式。</td>
+</tr>
+<tr>
+<td>r+</td>
+<td>打开一个文件用于读写。文件指针将会放在文件的开头。</td>
+</tr>
+<tr>
+<td>rb+</td>
+<td>以二进制格式打开一个文件用于读写。文件指针将会放在文件的开头。</td>
+</tr>
+<tr>
+<td>w</td>
+<td>打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td>wb</td>
+<td>以二进制格式打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td>w+</td>
+<td>打开一个文件用于读写。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td>wb+</td>
+<td>以二进制格式打开一个文件用于读写。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td>a</td>
+<td>打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。</td>
+</tr>
+<tr>
+<td>ab</td>
+<td>以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。</td>
+</tr>
+<tr>
+<td>a+</td>
+<td>打开一个文件用于读写。如果该文件已存在，文件指针将会放在文件的结尾。文件打开时会是追加模式。如果该文件不存在，创建新文件用于读写。</td>
+</tr>
+<tr>
+<td>ab+</td>
+<td>以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。如果该文件不存在，创建新文件用于读写。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="File-对象的成员方法"><a href="#File-对象的成员方法" class="headerlink" title="File 对象的成员方法"></a>File 对象的成员方法</h3><ul>
+<li>成员方法 read() 可以将文件中的所有字符串读取<ul>
+<li>如果需要读取每一行，使用方法 readline()，返回一个字符串的列表</li>
+</ul>
+</li>
+<li>成员方法 write() 可以用于写入字符串<ul>
+<li><strong>这个方法会返回写入的字符串长度</strong></li>
+</ul>
+</li>
+<li>成员方法 close() 用于关闭打开的文件</li>
+<li>可以使用 import 讲另一个 .py 文件中的数据和函数导入到这个文件中</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>py.py</th>
+<th>py2.py</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>import py2<br />print(py2.cats)</td>
+<td>cats = [‘aaa’, ‘bbb’, ‘ccc’]</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="shelve-模块"><a href="#shelve-模块" class="headerlink" title="shelve 模块"></a>shelve 模块</h2><ul>
+<li><p>这个库是自带的</p>
+</li>
+<li><p>此模块可以讲 Python 的变量保存到二进制文件中</p>
+<ul>
+<li>程序再次打开这些文件时，可以恢复变量内容</li>
+<li>同样也可以用字典的遍历方法遍历 shelf 中的内容</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> shelve</span><br><span class="line">shelf = shelve.open(<span class="string">'mydata'</span>)</span><br><span class="line">cats = [<span class="string">'aaa'</span>, <span class="string">'bbb'</span>, <span class="string">'ccc'</span>]</span><br><span class="line">shelf[<span class="string">'cats'</span>] = cats</span><br><span class="line">shelf.close()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>读取方法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> shelve</span><br><span class="line">shelf = shelve.open(<span class="string">'mydata'</span>)</span><br><span class="line">print(shelf[<span class="string">'cats'</span>])</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">'aaa'</span>, <span class="string">'bbb'</span>, <span class="string">'ccc'</span>]</span><br></pre></td></tr></table></figure>
+<h1 id="组织文件"><a href="#组织文件" class="headerlink" title="组织文件"></a>组织文件</h1><h2 id="shutil-模块"><a href="#shutil-模块" class="headerlink" title="shutil 模块"></a>shutil 模块</h2><ul>
+<li>这玩意又称为 shell 工具</li>
+</ul>
+<h3 id="复制文件和文件夹"><a href="#复制文件和文件夹" class="headerlink" title="复制文件和文件夹"></a>复制文件和文件夹</h3><ul>
+<li>使用成员方法 copy(‘源文件路径’, ‘目标地址’)<ul>
+<li>源文件路径可以是相对路径也可以是绝对路径</li>
+<li>目标地址如果明确到一个文件名，则会讲源文件拷贝到目标地址的对应文件名内</li>
+<li>该方法返回复制到的地址的字符串（带文件名）</li>
+</ul>
+</li>
+<li>使用成员方法 copy(‘源文件夹路径’, ‘目标地址路径’)<ul>
+<li>将源文件夹以及它的所有子文件和子文件夹拷贝到目标地址路径下</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件和文件夹的移动和重命名"><a href="#文件和文件夹的移动和重命名" class="headerlink" title="文件和文件夹的移动和重命名"></a>文件和文件夹的移动和重命名</h3><ul>
+<li>成员方法 move(‘源文件或文件夹路径’, ‘目标地址’)<ul>
+<li>如果移动到的目标文件夹中有重名文件，<strong>则会覆盖</strong></li>
+<li>如果目标地址是个文件名，则移动的同时还会重命名文件</li>
+<li>如果目标地址是个文件夹名，但是此文件夹不存在，则会<strong>移动的同时重命名为同此文件夹名的文件</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="永久删除文件和文件夹"><a href="#永久删除文件和文件夹" class="headerlink" title="永久删除文件和文件夹"></a>永久删除文件和文件夹</h2><ul>
+<li>以下删除都是<strong>永久性的</strong><ul>
+<li>使用 os.unlink(‘文件路径’) 只能单独删除文件</li>
+<li>使用 os.rmdir(‘文件夹路径’) 只能删除空文件夹</li>
+<li>而使用 shutil 的成员方法 rmtree(‘文件夹路径’) 将<strong>永久删除文件夹以及其中的所有文件</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="send2trash-模块"><a href="#send2trash-模块" class="headerlink" title="send2trash 模块"></a>send2trash 模块</h2><ul>
+<li>这个模块可以将文件丢到回收站里</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> send2trash</span><br><span class="line">send2trash.send2trash(<span class="string">'aaaa.txt'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="os-模块遍历文件夹"><a href="#os-模块遍历文件夹" class="headerlink" title="os 模块遍历文件夹"></a>os 模块遍历文件夹</h2><ul>
+<li>成员方法 walk(‘文件夹路径’) 会遍历指定路径中的所有文件夹和文件<ul>
+<li>只遍历一层</li>
+<li>可以用递归的方式遍历多层</li>
+</ul>
+</li>
+</ul>
+<h2 id="zipfile-模块"><a href="#zipfile-模块" class="headerlink" title="zipfile 模块"></a>zipfile 模块</h2><ul>
+<li>读取 zip 文件</li>
+<li><strong>用完记得 close() </strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line">varzip = zipfile.ZipFile(<span class="string">'aaa.zip'</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>成员方法 namelist() 会返回一个列表，包括了 zip 中的所有文件夹和文件</p>
+<ul>
+<li>也包括文件夹中的文件，广度遍历</li>
+</ul>
+</li>
+<li><p>varzip 对象的成员方法 getinfo(‘压缩包中的路径’) 可以用来获取文件信息</p>
+<ul>
+<li>路径使用类似 ‘folder/folder/aaa.txt’ 来写</li>
+<li>文件信息对象有 file_size 和 compress_size 两个属性<ul>
+<li>分别是文件的真实大小和压缩后的大小</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>可以借助 namelist() 返回的列表遍历 zip 中的所有文件计算压缩率等</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line">var = zipfile.ZipFile(<span class="string">'./a.zip'</span>)</span><br><span class="line">sizeTotal = <span class="number">0.0</span></span><br><span class="line">zipdSize = <span class="number">0.0</span></span><br><span class="line">print(var.namelist())</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> var.namelist():</span><br><span class="line">    zipdSize += var.getinfo(i).compress_size</span><br><span class="line">    sizeTotal += var.getinfo(i).file_size</span><br><span class="line">print(<span class="string">"压缩率: %.2f"</span> % ((zipdSize / sizeTotal)))</span><br></pre></td></tr></table></figure>
+<h3 id="解压缩所有文件"><a href="#解压缩所有文件" class="headerlink" title="解压缩所有文件"></a>解压缩所有文件</h3><ul>
+<li>成员方法 extracall() 解压缩所有文件<ul>
+<li>可以像其传递一个路径，则会解压到此路径<ul>
+<li>如果路径的文件夹不存在，则会创建一个对应的文件夹</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>成员方法 extract(‘压缩文件中的文件路径’)<ul>
+<li>也可以是 extract(‘文件路径’,’解压到的目录’)</li>
+<li><strong>文件路径必须匹配 namelist() 中的某个元素</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="创建和添加到-zip-文件"><a href="#创建和添加到-zip-文件" class="headerlink" title="创建和添加到 zip 文件"></a>创建和添加到 zip 文件</h3><ul>
+<li>还可以给 zipfile.Zipfile() 传递一个参数 ‘w’，来进入写模式<ul>
+<li>如果写模式的第一个参数的 zip 不存在，则会创建新的</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">varzip = zipfile.Zipfile(<span class="string">'new.zip'</span>,<span class="string">'w'</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>此时可以使用对象方法 write(‘压缩到的文件路径’, compress_type=压缩算法)<ul>
+<li>压缩算法可以是 zipfile.ZIP_DEFLATED 压缩效果比较好</li>
+</ul>
+</li>
+<li><p>也可以是 zipfile.ZIP_STORED 不进行压缩直接存储</p>
+</li>
+<li><p>全部压缩完记得 close()</p>
+</li>
+</ul>
+<h1 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h1><h2 id="trackback-模块"><a href="#trackback-模块" class="headerlink" title="trackback 模块"></a>trackback 模块</h2><ul>
+<li>成员方法 format_exc() 可以获取引发当前异常的 Traceback 字符串</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> traceback</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">raise</span> Exception(<span class="string">"Ohhhhhh"</span>)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(traceback.format_exc().split(<span class="string">'\n'</span>)[<span class="number">-2</span>])</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Exception: Ohhhhhh</span><br></pre></td></tr></table></figure>
+<h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><ul>
+<li>使用 assert 语句来对程序进行断言<ul>
+<li>此方法可以避免程序出现一些明显的错误</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">assert</span> <span class="number">1</span> == <span class="number">2</span>, <span class="string">"1 != 2"</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果断言不成立会有 AssertionError<ul>
+<li>Error 的内容为 assert 中逗号后的字符串</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"py.py"</span>, line 1, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">AssertionError: 1 != 2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在 Python 运行时传入 -O 选项，可以禁用断言</li>
+</ul>
+<h2 id="logging-日志模块"><a href="#logging-日志模块" class="headerlink" title="logging 日志模块"></a>logging 日志模块</h2><ul>
+<li>使用此模块来记录日志</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line">logging.basicConfig(level=logging.DEBUG, format=<span class="string">' %(asctime)s - %(levelname)s - %(message)s'</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这个写在代码 import 的下一行<ul>
+<li>这样程序会创建一个日志对象来记录程序运行内容</li>
+</ul>
+</li>
+<li><p>成员方法 debug(字符串) 可以将日志写入 logging 对象里</p>
+<ul>
+<li>同时会在控制台 print 日志的内容</li>
+</ul>
+</li>
+<li><p>禁用日志的话使用</p>
+<ul>
+<li>用完就不会在控制台显示日志内容了</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logging.disable(logging.CRITICAL)</span><br></pre></td></tr></table></figure>
+<h3 id="日志级别"><a href="#日志级别" class="headerlink" title="日志级别"></a>日志级别</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>级别</th>
+<th>记录函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DEBUG</td>
+<td>logging.debug()</td>
+<td>记录很小的细节</td>
+</tr>
+<tr>
+<td>INFO</td>
+<td>logging.info()</td>
+<td>记录一般信息</td>
+</tr>
+<tr>
+<td>WARNING</td>
+<td>logging.warning()</td>
+<td>记录可能的问题</td>
+</tr>
+<tr>
+<td>ERROR</td>
+<td>logging.error()</td>
+<td>记录错误</td>
+</tr>
+<tr>
+<td>CRITICAL</td>
+<td>logging.critical()</td>
+<td>记录致命错误</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>向 logging.disable() 传递级别可以只关注比此级别高的日志信息<ul>
+<li>DEBUG 为最低级</li>
+</ul>
+</li>
+</ul>
+<h3 id="将日志记录到文件"><a href="#将日志记录到文件" class="headerlink" title="将日志记录到文件"></a>将日志记录到文件</h3><ul>
+<li>只需要将 basicConfig 改成这样写就好</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logging.basicConfig(filename=<span class="string">'文件路径'</span>, level=logging.DEBUG, format=<span class="string">' %(asctime)s - %(levelname)s - %(message)s'</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这样的话，日志就只会写到路径中</li>
+</ul>
+<h1 id="抓取-Web-信息"><a href="#抓取-Web-信息" class="headerlink" title="抓取 Web 信息"></a>抓取 Web 信息</h1><h2 id="webbrowser-模块"><a href="#webbrowser-模块" class="headerlink" title="webbrowser 模块"></a>webbrowser 模块</h2><ul>
+<li>此模块用于启动了浏览器打开 URL<ul>
+<li><strong>记得一定需要加上 ‘http://‘ 和结束的 ‘/‘</strong></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> webbrowser</span><br><span class="line">webbrowser.open(<span class="string">'http://www.gugugu.org.cn/'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="requests-模块"><a href="#requests-模块" class="headerlink" title="requests 模块"></a>requests 模块</h2><ul>
+<li>成员方法 get(‘URL’) 可以获取一个网页的页面信息，也可以下载文件<ul>
+<li>此方法会返回一个结果对象</li>
+<li>属性 text 为网页的信息，保存的是Unicode型的数据</li>
+<li>属性 content 也是网页信息，保存的是二进制数据</li>
+<li>属性 status_code 为访问的状态码，如果等于 ‘200’ 或 requests.codes.ok 则成功</li>
+</ul>
+</li>
+</ul>
+<h3 id="错误检查"><a href="#错误检查" class="headerlink" title="错误检查"></a>错误检查</h3><ul>
+<li>结果对象的成员方法 raise_for_status() 可以检查连接是否出错<ul>
+<li>出错了会抛出异常 requests.exceptions.HTTPError</li>
+</ul>
+</li>
+</ul>
+<h3 id="保存下载的文件"><a href="#保存下载的文件" class="headerlink" title="保存下载的文件"></a>保存下载的文件</h3><ul>
+<li>使用正常的 write 就好了</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ff = open(<span class="string">'saved.txt'</span>,<span class="string">'wb'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> res.iter_content(<span class="number">100000</span>):</span><br><span class="line">  	ff.write(i)</span><br><span class="line">ff.close()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>下载对象的 iter_content() 方法用于在每次迭代时返回制定长度的内容<ul>
+<li><strong>返回的是 bytes 数据类型</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="post-方法"><a href="#post-方法" class="headerlink" title="post() 方法"></a>post() 方法</h3><ul>
+<li>需要 post 的数据需要用字典的方式进行存储</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;<span class="string">'key1'</span>:<span class="string">'data1'</span>, <span class="string">'key2'</span>:<span class="string">'data2'</span>&#125;</span><br><span class="line">r = requests.post(url, data)</span><br></pre></td></tr></table></figure>
+<h2 id="BeatuifulSoup-模块"><a href="#BeatuifulSoup-模块" class="headerlink" title="BeatuifulSoup 模块"></a>BeatuifulSoup 模块</h2><ul>
+<li><p>安装名称是 beautifulsoup4 导入时它的名称是 bs4</p>
+</li>
+<li><p>此模块专注于处理 html 文档</p>
+</li>
+<li>新建 BeautifulSoup 对象来进行处理<ul>
+<li>构造函数的参数只要是满足 html 的文本就行</li>
+<li>可以从文件读取，也可以 requests 抓取</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">soup = bs4.BeautifulSoup(res.text)</span><br></pre></td></tr></table></figure>
+<h3 id="select-方法寻找元素"><a href="#select-方法寻找元素" class="headerlink" title="select() 方法寻找元素"></a>select() 方法寻找元素</h3><ul>
+<li>传入的参数是满足 CSS 选择器的字符串</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s = soup.select(<span class="string">'div span .test'</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>此方法放回一个 Tag 对象的列表</li>
+<li>可以将列表中的元素转换成 str<ul>
+<li>此时会变为对应的 html 标签内容</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import bs4</span><br><span class="line">&gt;&gt;&gt; exampleFile = open(<span class="string">'example.html'</span>)</span><br><span class="line">&gt;&gt;&gt; exampleSoup = bs4.BeautifulSoup(exampleFile.read())</span><br><span class="line">&gt;&gt;&gt; elems = exampleSoup.select(<span class="string">'#author'</span>)</span><br><span class="line">&gt;&gt;&gt; <span class="built_in">type</span>(elems)</span><br><span class="line">&lt;class <span class="string">'list'</span>&gt;</span><br><span class="line">&gt;&gt;&gt; len(elems)</span><br><span class="line">1</span><br><span class="line">&gt;&gt;&gt; <span class="built_in">type</span>(elems[0])</span><br><span class="line">&lt;class <span class="string">'bs4.element.Tag'</span>&gt;</span><br><span class="line">&gt;&gt;&gt; elems[0].getText()</span><br><span class="line"><span class="string">'Al Sweigart'</span></span><br><span class="line">&gt;&gt;&gt; str(elems[0])</span><br><span class="line"><span class="string">'&lt;span id="author"&gt;Al Sweigart&lt;/span&gt;'</span></span><br><span class="line">&gt;&gt;&gt; elems[0].attrs</span><br><span class="line">&#123;<span class="string">'id'</span>: <span class="string">'author'</span>&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Tag 对象的 attrs 属性以字典的形式记录它拥有的所有 HTML 属性</p>
+<ul>
+<li>借助 Tag 对象的 get(‘key1’) 方法可以得到字典中对应的值</li>
+</ul>
+</li>
+<li><p>Tag 对象的 getText() 方法可以将标签中的有效文本提取出来</p>
+</li>
+</ul>
+<h1 id="处理-Excel"><a href="#处理-Excel" class="headerlink" title="处理 Excel"></a>处理 Excel</h1><h2 id="openpyxl-模块打开-Excel-文档"><a href="#openpyxl-模块打开-Excel-文档" class="headerlink" title="openpyxl 模块打开 Excel 文档"></a>openpyxl 模块打开 Excel 文档</h2><ul>
+<li><p><strong><font color=red>打开有图片和图表的文件后保存，会丢失图片和图表信息</font></strong></p>
+</li>
+<li><p>使用成员方法 load_wordbook(‘文件路径’) 来打开 excel 文档</p>
+<ul>
+<li>如果不想读取 Excel 中的公式，只需要值的话，需要将 data_only 属性设为 True<ul>
+<li>wb = openpyxl.load_workbook(‘aaa.xlsx’, data_only=True)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> openpyxl</span><br><span class="line">wb = openpyxl.load_workbook(<span class="string">'aaa.xlsx'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="获取所有表名"><a href="#获取所有表名" class="headerlink" title="获取所有表名"></a>获取所有表名</h2><ul>
+<li>成员方法 get_sheet_names() 可以获取此文件的所有表名<ul>
+<li>返回的是个列表</li>
+</ul>
+</li>
+<li>成员方法 get_sheet_by_name(‘表名’) 用于获取制定表中的信息<ul>
+<li>此方法返回一个表对象</li>
+</ul>
+</li>
+<li>成员方法 get_active_sheet() 可以获取当前 Excel 打开的表格<ul>
+<li>同样也返回一个表对象<ul>
+<li>使用表对象的属性 title 可以获取表名</li>
+<li><strong>title 是可以修改的</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import openpyxl</span><br><span class="line">&gt;&gt;&gt; wb = openpyxl.load_workbook(<span class="string">'example.xlsx'</span>) </span><br><span class="line">&gt;&gt;&gt; wb.get_sheet_names()</span><br><span class="line">[<span class="string">'Sheet1'</span>, <span class="string">'Sheet2'</span>, <span class="string">'Sheet3'</span>]</span><br><span class="line">&gt;&gt;&gt; sheet = wb.get_sheet_by_name(<span class="string">'Sheet3'</span>)</span><br><span class="line">&gt;&gt;&gt; sheet</span><br><span class="line">&lt;Worksheet <span class="string">"Sheet3"</span>&gt;</span><br><span class="line">&gt;&gt;&gt; <span class="built_in">type</span>(sheet)</span><br><span class="line">&lt;class <span class="string">'openpyxl.worksheet.worksheet.Worksheet'</span>&gt; </span><br><span class="line">&gt;&gt;&gt; sheet.title</span><br><span class="line"><span class="string">'Sheet3'</span></span><br><span class="line">&gt;&gt;&gt; anotherSheet = wb.get_active_sheet()</span><br><span class="line">&gt;&gt;&gt; anotherSheet</span><br><span class="line">&lt;Worksheet <span class="string">"Sheet1"</span>&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="获取单元格信息"><a href="#获取单元格信息" class="headerlink" title="获取单元格信息"></a>获取单元格信息</h2><ul>
+<li>对于表对象，可以使用类似字典的键值对的方式使用坐标读取单元格信息<ul>
+<li><strong>此方法在行或列到两位字符后就不好用了</strong></li>
+<li>成员方法 cell(row=行数, column=列数) 也可以读取信息<ul>
+<li><strong>注意行数和列数都是数字</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>单元格信息可以直接修改</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">res = sheet[<span class="string">'A1'</span>]</span><br><span class="line">print(res.value)</span><br><span class="line">sheet[<span class="string">'A1'</span>] = <span class="string">'test'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>对于单元格对象<ul>
+<li>属性 value 表示表格中记录的信息</li>
+<li>属性 row 记录行信息，<strong>其为 int 类型</strong></li>
+<li>属性 column 记录列信息，<strong>其为 str 类型</strong></li>
+<li>属性 coordinate 记录具体坐标信息，<strong>其为 str 类型</strong></li>
+</ul>
+</li>
+<li>对于表对象<ul>
+<li>属性 max_row 可以获取最大的行</li>
+<li>属性 max_column 可以获取最大的列</li>
+<li><strong>注意二者返回的都是整数</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="列字母和数字键的转换"><a href="#列字母和数字键的转换" class="headerlink" title="列字母和数字键的转换"></a>列字母和数字键的转换</h2><ul>
+<li>openpyxl.utils.get_column_letter(数字列数) 用于将对应的列数专转为字母形式</li>
+<li>openpyxl.utils.column_index_from_string(‘列字母’) 用于将对应字母转为数字列数</li>
+</ul>
+<h2 id="从表中取得行和列"><a href="#从表中取得行和列" class="headerlink" title="从表中取得行和列"></a>从表中取得行和列</h2><ul>
+<li>对于表对象，还可以选择区域的单元格进行信息获取<ul>
+<li>此时返回一个 Generator 对象</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rect = sheet[<span class="string">'A1'</span>:<span class="string">'C3'</span>]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Generator 对象会将区域内的每一行的 Cell 归入一个元组<ul>
+<li>上方写法则会有三个元组，每个元组里三个 Cell</li>
+</ul>
+</li>
+<li>遍历方法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> rowOfCellObjects <span class="keyword">in</span> sheet[<span class="string">'A1'</span>:<span class="string">'C3'</span>]:</span><br><span class="line">		<span class="keyword">for</span> cellObj <span class="keyword">in</span> rowOfCellObjects:</span><br><span class="line">      	print(cellObj.coordinate, cellObj.value)</span><br><span class="line">    print(<span class="string">'--- END OF ROW ---'</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>也可以遍历某一列的所有有效值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> cellObj <span class="keyword">in</span> sheet.columns[<span class="number">1</span>]:</span><br><span class="line">		print(cellObj.value)</span><br></pre></td></tr></table></figure>
+<h2 id="创建和写入-Excel-文档"><a href="#创建和写入-Excel-文档" class="headerlink" title="创建和写入 Excel 文档"></a>创建和写入 Excel 文档</h2><ul>
+<li>如果不需要从文件中读取文档，而是新建的话，则使用成员方法 Workbook()</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wb = openpyxl.Workbook()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改完表格后保存到文件</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wb.save(<span class="string">'保存到的文件路径'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="创建和删除工作表"><a href="#创建和删除工作表" class="headerlink" title="创建和删除工作表"></a>创建和删除工作表</h2><ul>
+<li>使用工作簿对象的成员方法 create_sheet() 可以创建一个新的工作表<ul>
+<li>使用 create_sheet(index=创建的表的位置, title=’表名’) 可以更明确的创建表</li>
+</ul>
+</li>
+<li>成员方法 remove_sheet(表对象) 可以移除对应的表<ul>
+<li>表对象可以用 get_sheet_by_name(‘表名’) 来获取</li>
+</ul>
+</li>
+</ul>
+<h2 id="设置单元格字体风格"><a href="#设置单元格字体风格" class="headerlink" title="设置单元格字体风格"></a>设置单元格字体风格</h2><ul>
+<li>使用 openpyxl.styles.Font() 可以创建字体对象<ul>
+<li>例如 openpyxl.styles.Font(size=24, italic=True)</li>
+</ul>
+</li>
+<li>使用 openpyxl.styles.Style() 可以创建单元格样式对象<ul>
+<li>例如 openpyxl.styles.Style(font=openpyxl.styles.Font(size=24, italic=True))</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import openpyxl</span><br><span class="line">&gt;&gt;&gt; from openpyxl.styles import Font, Style </span><br><span class="line">&gt;&gt;&gt; wb = openpyxl.Workbook()</span><br><span class="line">&gt;&gt;&gt; sheet = wb.get_sheet_by_name(<span class="string">'Sheet'</span>)</span><br><span class="line">&gt;&gt;&gt; italic24Font = Font(size=24, italic=True) </span><br><span class="line">&gt;&gt;&gt; styleObj = Style(font=italic24Font)</span><br><span class="line">&gt;&gt;&gt; sheet[<span class="string">'A1'</span>].style/styleObj</span><br><span class="line">&gt;&gt;&gt; sheet[<span class="string">'A1'</span>] = <span class="string">'Hello world!'</span> </span><br><span class="line">&gt;&gt;&gt; wb.save(<span class="string">'styled.xlsx'</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用 sheet[‘A1’].style/styleObj 来应用样式</li>
+</ul>
+<h2 id="Font-对象"><a href="#Font-对象" class="headerlink" title="Font 对象"></a>Font 对象</h2><ul>
+<li>Font 对象支持的相关属性</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数据类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>字体名称</td>
+</tr>
+<tr>
+<td>size</td>
+<td>int</td>
+<td>字体大小</td>
+</tr>
+<tr>
+<td>bold</td>
+<td>bool</td>
+<td>是否粗体</td>
+</tr>
+<tr>
+<td>italic</td>
+<td>bool</td>
+<td>是否斜体</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h2><ul>
+<li>如果需要使用公式，直接将单元格的内容改成公式字符串就行<ul>
+<li>例如 ‘=SUM(B1:B8)’</li>
+</ul>
+</li>
+</ul>
+<h2 id="行列的调整"><a href="#行列的调整" class="headerlink" title="行列的调整"></a>行列的调整</h2><ul>
+<li>调整行高和列宽<ul>
+<li>表对象有 row_dimensions 和 column_dimensions 属性，<strong>其以字典形式存储</strong><ul>
+<li>例如 sheet.row_dimensions[1].height = 70</li>
+<li>或者 sheet.column_dimensions[‘a’].width = 20</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>合并和拆分单元格<ul>
+<li>表对象的成员方法 merge_cells(‘A1:C3’) 用于合并</li>
+<li>成员方法 unmerge_cells(‘A1:C3’) 用于拆分</li>
+<li><strong>合并的单元格设置左上角的格的值即可修改整个单元格的值</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="冻结窗格"><a href="#冻结窗格" class="headerlink" title="冻结窗格"></a>冻结窗格</h2><ul>
+<li><p>选定一个单元格，单元格上方的所有行和左边的所有列都会被冻结</p>
+<ul>
+<li><strong>单元格所在行和列不会被冻结</strong></li>
+</ul>
+</li>
+<li><p>使用 sheet.freeze_panes = ‘B2’ 冻结第一行和第一列</p>
+</li>
+<li>取消冻结的话使用 sheet.freeze_panes = None</li>
+</ul>
+<h2 id="图表"><a href="#图表" class="headerlink" title="图表"></a>图表</h2><ul>
+<li>openpyxl 创建图表的步骤<ol>
+<li>选择一个矩形区域，创建 Reference 对象</li>
+<li>通过传入 Reference 对象创建 Series 对象</li>
+<li>创建 Chart 对象</li>
+<li>将 Series 对象添加到 Chart 对象</li>
+<li>可选地设置 Chart 对象的 drawing.top、drawing.left、drawing.width 和 drawing.height 变量<ul>
+<li>这些变量值的单位是像素</li>
+</ul>
+</li>
+<li>将 Chart 对象添加到 Worksheet 对象</li>
+</ol>
+</li>
+<li>openpyxl 支持的图表类型<ul>
+<li>openpyxl.charts.BarChart()</li>
+<li>openpyxl.charts.LineChart()</li>
+<li>openpyxl.charts.Scatterchart()</li>
+<li>openpyxl.charts.PieChart()</li>
+</ul>
+</li>
+</ul>
+<h2 id="Reference-对象"><a href="#Reference-对象" class="headerlink" title="Reference 对象"></a>Reference 对象</h2><ul>
+<li><p>创建此对象需要传入三个参数</p>
+<ul>
+<li>包含图表数据的表对象</li>
+<li>两个整数的元组，代表矩形选择区域的左上角单元格，该区域包含图表数 据:元组中第一个整数是行，第二个整数是列。<strong>请注意第一行是 1，不是 0</strong></li>
+<li>两个整数的元组，代表矩形选择区域的右下角单元格，该区域包含图表数 据:元组中第一个整数是行，第二个整数是列</li>
+</ul>
+</li>
+<li><p>整体创建过程</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> openpyxl</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>wb = openpyxl.Workbook()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sheet = wb.get_active_sheet()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">11</span>): <span class="comment"># create some data in column A</span></span><br><span class="line">				sheet[<span class="string">'A'</span> + str(i)] = i</span><br><span class="line">    </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>refObj = openpyxl.charts.Reference(sheet, (<span class="number">1</span>, <span class="number">1</span>), (<span class="number">10</span>, <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>seriesObj = openpyxl.charts.Series(refObj, title=<span class="string">'First series'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chartObj = openpyxl.charts.BarChart() </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chartObj.append(seriesObj)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chartObj.drawing.top = <span class="number">50</span>				<span class="comment"># set the position</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chartObj.drawing.left = <span class="number">100</span> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chartObj.drawing.width = <span class="number">300</span> 		<span class="comment"># set the size</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chartObj.drawing.height = <span class="number">200</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sheet.add_chart(chartObj) </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>wb.save(<span class="string">'sampleChart.xlsx'</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="处理-CSV"><a href="#处理-CSV" class="headerlink" title="处理 CSV"></a>处理 CSV</h1><h2 id="CSV-文件"><a href="#CSV-文件" class="headerlink" title="CSV 文件"></a>CSV 文件</h2><ul>
+<li>CSV 全名 Comma-Separated Values<ul>
+<li>其为简化的电子表格，保存为纯文本文件</li>
+</ul>
+</li>
+<li>Python 自带 csv 模块用于处理此类文件</li>
+</ul>
+<h2 id="Reader-对象"><a href="#Reader-对象" class="headerlink" title="Reader 对象"></a>Reader 对象</h2><ul>
+<li>用于读取 csv 中的信息</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> csv</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>exampleFile = open(<span class="string">'example.csv'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>exampleReader = csv.reader(exampleFile) </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>exampleData = list(exampleReader)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>exampleData</span><br><span class="line">[[<span class="string">'4/5/2015 13:34'</span>, <span class="string">'Apples'</span>, <span class="string">'73'</span>], [<span class="string">'4/5/2015 3:41'</span>, <span class="string">'Cherries'</span>, <span class="string">'85'</span>], [<span class="string">'4/6/2015 12:46'</span>, <span class="string">'Pears'</span>, <span class="string">'14'</span>], [<span class="string">'4/8/2015 8:59'</span>, <span class="string">'Oranges'</span>, <span class="string">'52'</span>], [<span class="string">'4/10/2015 2:07'</span>, <span class="string">'Apples'</span>, <span class="string">'152'</span>], [<span class="string">'4/10/2015 18:10'</span>, <span class="string">'Bananas'</span>, <span class="string">'23'</span>], [<span class="string">'4/10/2015 2:40'</span>, <span class="string">'Strawberries'</span>, <span class="string">'98'</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>exampleData[<span class="number">0</span>][<span class="number">1</span>]</span><br><span class="line"><span class="string">'Apples'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>循环 Reader 对象的方法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> exampleReader:</span><br><span class="line">		print(<span class="string">'Row #'</span> + str(exampleReader.line_num) + <span class="string">' '</span> + str(row))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Row <span class="comment">#1 ['4/5/2015 13:34', 'Apples', '73']</span></span><br><span class="line">Row <span class="comment">#2 ['4/5/2015 3:41', 'Cherries', '85']</span></span><br><span class="line">Row <span class="comment">#3 ['4/6/2015 12:46', 'Pears', '14']</span></span><br><span class="line">Row <span class="comment">#4 ['4/8/2015 8:59', 'Oranges', '52']</span></span><br><span class="line">Row <span class="comment">#5 ['4/10/2015 2:07', 'Apples', '152']</span></span><br><span class="line">Row <span class="comment">#6 ['4/10/2015 18:10', 'Bananas', '23']</span></span><br><span class="line">Row <span class="comment">#7 ['4/10/2015 2:40', 'Strawberries', '98']</span></span><br></pre></td></tr></table></figure>
+<h2 id="Writer-对象"><a href="#Writer-对象" class="headerlink" title="Writer 对象"></a>Writer 对象</h2><ul>
+<li>用于写入文件</li>
+<li>注意 open 的时候需要将 newline 属性设置为空字符串，即’’<ul>
+<li>不这么写的话每次 writerow 完会分两行</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> csv</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>outputFile = open(<span class="string">'output.csv'</span>, <span class="string">'w'</span>, newline=<span class="string">''</span>) </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>outputWriter = csv.writer(outputFile)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>outputWriter.writerow([<span class="string">'spam'</span>, <span class="string">'eggs'</span>, <span class="string">'bacon'</span>, <span class="string">'ham'</span>])</span><br><span class="line"><span class="number">21</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>outputWriter.writerow([<span class="string">'Hello, world!'</span>, <span class="string">'eggs'</span>, <span class="string">'bacon'</span>, <span class="string">'ham'</span>]) </span><br><span class="line"><span class="number">32</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>outputWriter.writerow([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3.141592</span>, <span class="number">4</span>])</span><br><span class="line"><span class="number">16</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>outputFile.close()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>delimiter 和 lineterminator 参数<ul>
+<li>在新建 Writer 对象的时候可以设置二者，从而修改 csv 文件的分隔符和换行符</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csvWriter = csv.writer(csvFile, delimiter=<span class="string">'\t'</span>, lineterminator=<span class="string">'\n\n'</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="处理-Json"><a href="#处理-Json" class="headerlink" title="处理 Json"></a>处理 Json</h1><h2 id="loads-读取-JSON"><a href="#loads-读取-JSON" class="headerlink" title="loads() 读取 JSON"></a>loads() 读取 JSON</h2><ul>
+<li>可以从 json 文件中读取数据并转换为字典数据</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>stringOfJsonData = <span class="string">'&#123;"name": "Zophie", "isCat": true, "miceCaught": 0, "felineIQ": null&#125;'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> json</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>jsonDataAsPythonValue = json.loads(stringOfJsonData)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>jsonDataAsPythonValue</span><br><span class="line">&#123;<span class="string">'isCat'</span>: <span class="literal">True</span>, <span class="string">'miceCaught'</span>: <span class="number">0</span>, <span class="string">'name'</span>: <span class="string">'Zophie'</span>, <span class="string">'felineIQ'</span>: <span class="literal">None</span>&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="dumps-导出-JSON"><a href="#dumps-导出-JSON" class="headerlink" title="dumps 导出 JSON"></a>dumps 导出 JSON</h2><ul>
+<li>可以讲字典数据转换为 json 格式的字符串</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>pythonValue = &#123;<span class="string">'isCat'</span>: <span class="literal">True</span>, <span class="string">'miceCaught'</span>: <span class="number">0</span>, <span class="string">'name'</span>: <span class="string">'Zophie'</span>, <span class="string">'felineIQ'</span>: <span class="literal">None</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> json</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stringOfJsonData = json.dumps(pythonValue)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stringOfJsonData</span><br><span class="line"><span class="string">'&#123;"isCat": true, "felineIQ": null, "miceCaught": 0, "name": "Zophie" &#125;'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>更为优雅的打印出 JSON</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(json.dumps(data, indent=<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<h1 id="时间与计划任务"><a href="#时间与计划任务" class="headerlink" title="时间与计划任务"></a>时间与计划任务</h1><h2 id="time-模块"><a href="#time-模块" class="headerlink" title="time 模块"></a>time 模块</h2><h3 id="Unix-纪元时间戳函数-time"><a href="#Unix-纪元时间戳函数-time" class="headerlink" title="Unix 纪元时间戳函数 time()"></a>Unix 纪元时间戳函数 time()</h3><ul>
+<li>此函数返回自 Unix 纪元开始至今过去的<strong>秒数的浮点值</strong><ul>
+<li>Unix 纪元的第一天为 1970 年 1 月 1 日 0 点</li>
+<li>这个值称为 Unix 纪元时间戳</li>
+</ul>
+</li>
+</ul>
+<h3 id="延时函数-sleep"><a href="#延时函数-sleep" class="headerlink" title="延时函数 sleep()"></a>延时函数 sleep()</h3><ul>
+<li>此函数用于暂停程序，传递给函数的值的单位为秒数<ul>
+<li>比如暂停 1 秒: time.sleep(1)</li>
+</ul>
+</li>
+</ul>
+<h2 id="datetime-模块"><a href="#datetime-模块" class="headerlink" title="datetime 模块"></a>datetime 模块</h2><ul>
+<li>此模块用于处理具体的年月日时分秒毫秒微秒<ul>
+<li>返回一个包含所有元素的元组</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> datetime</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>datetime.datetime.now()</span><br><span class="line">datetime.datetime(<span class="number">2015</span>, <span class="number">2</span>, <span class="number">27</span>, <span class="number">11</span>, <span class="number">10</span>, <span class="number">49</span>, <span class="number">55</span>, <span class="number">53</span>) </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dt = datetime.datetime(<span class="number">2015</span>, <span class="number">10</span>, <span class="number">21</span>, <span class="number">16</span>, <span class="number">29</span>, <span class="number">0</span>) </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dt.year, dt.month, dt.day</span><br><span class="line">(<span class="number">2015</span>, <span class="number">10</span>, <span class="number">21</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dt.hour, dt.minute, dt.second</span><br><span class="line">(<span class="number">16</span>, <span class="number">29</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Unix 纪元时间戳的转换方法 fromtimestamp(‘秒数’)<ul>
+<li>返回一个 datetime 对象，表示从时间戳开始经过秒数后的时间</li>
+<li>datetime 对象的日期和时间将根据本地时区转换。在交互式环境中输入以下 代码:</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>datetime.datetime.fromtimestamp(<span class="number">1000000</span>) </span><br><span class="line">datetime.datetime(<span class="number">1970</span>, <span class="number">1</span>, <span class="number">12</span>, <span class="number">5</span>, <span class="number">46</span>, <span class="number">40</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>datetime.datetime.fromtimestamp(time.time()) </span><br><span class="line">datetime.datetime(<span class="number">2015</span>, <span class="number">2</span>, <span class="number">27</span>, <span class="number">11</span>, <span class="number">13</span>, <span class="number">0</span>, <span class="number">604980</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>datetime 对象可以比较大小，时间越往后的则越大</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>halloween2015 = datetime.datetime(<span class="number">2015</span>, <span class="number">10</span>, <span class="number">31</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>) </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>newyears2016 = datetime.datetime(<span class="number">2016</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>) </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>oct31_2015 = datetime.datetime(<span class="number">2015</span>, <span class="number">10</span>, <span class="number">31</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>halloween2015 == oct31_2015 </span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>halloween2015 &gt; newyears2016 </span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>newyears2016 &gt; halloween2015 </span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>newyears2016 != oct31_2015 </span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<h3 id="datetime-对象转为字符串"><a href="#datetime-对象转为字符串" class="headerlink" title="datetime 对象转为字符串"></a>datetime 对象转为字符串</h3><ul>
+<li><p>datetime 对象转换为字符串方法 strftime(‘格式字符串’)</p>
+<ul>
+<li><p>支持的格式符号</p>
+<ul>
+<li>%y 两位数的年份表示（00-99）</li>
+<li>%Y 四位数的年份表示（000-9999）</li>
+<li>%m 月份（01-12）</li>
+<li>%d 月内中的一天（0-31）</li>
+<li>%H 24小时制小时数（0-23）</li>
+<li>%I 12小时制小时数（01-12）</li>
+<li>%M 分钟数（00=59）</li>
+<li>%S 秒（00-59）</li>
+<li>%a 本地简化星期名称</li>
+<li>%A 本地完整星期名称</li>
+<li>%b 本地简化的月份名称</li>
+<li>%B 本地完整的月份名称</li>
+<li>%c 本地相应的日期表示和时间表示</li>
+<li>%j 年内的一天（001-366）</li>
+<li>%p 本地A.M.或P.M.的等价符</li>
+<li>%U 一年中的星期数（00-53）星期天为星期的开始</li>
+<li>%w 星期（0-6），星期天为星期的开始</li>
+<li>%W 一年中的星期数（00-53）星期一为星期的开始</li>
+<li>%x 本地相应的日期表示</li>
+<li>%X 本地相应的时间表示</li>
+<li>%Z 当前时区的名称</li>
+<li>%% %号本身</li>
+</ul>
+</li>
+<li>使用举例</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>oct21st = datetime.datetime(<span class="number">2015</span>, <span class="number">10</span>, <span class="number">21</span>, <span class="number">16</span>, <span class="number">29</span>, <span class="number">0</span>) </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>oct21st.strftime(<span class="string">'%Y/%m/%d %H:%M:%S'</span>)</span><br><span class="line"><span class="string">'2015/10/21 16:29:00'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>oct21st.strftime(<span class="string">'%I:%M %p'</span>)</span><br><span class="line"><span class="string">'04:29 PM'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>oct21st.strftime(<span class="string">"%B of '%y"</span>) </span><br><span class="line"><span class="string">"October of '15"</span></span><br></pre></td></tr></table></figure>
+<h3 id="字符串转为-datatime-对象"><a href="#字符串转为-datatime-对象" class="headerlink" title="字符串转为 datatime 对象"></a>字符串转为 datatime 对象</h3><ul>
+<li>使用方法 strptime()<ul>
+<li>需要将格式字符串作为第二个参数</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>datetime.datetime.strptime(<span class="string">'October 21, 2015'</span>, <span class="string">'%B %d, %Y'</span>) </span><br><span class="line">datetime.datetime(<span class="number">2015</span>, <span class="number">10</span>, <span class="number">21</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>datetime.datetime.strptime(<span class="string">'2015/10/21 16:29:00'</span>, <span class="string">'%Y/%m/%d %H:%M:%S'</span>) </span><br><span class="line">datetime.datetime(<span class="number">2015</span>, <span class="number">10</span>, <span class="number">21</span>, <span class="number">16</span>, <span class="number">29</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>datetime.datetime.strptime(<span class="string">"October of '15"</span>, <span class="string">"%B of '%y"</span>) </span><br><span class="line">datetime.datetime(<span class="number">2015</span>, <span class="number">10</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>datetime.datetime.strptime(<span class="string">"November of '63"</span>, <span class="string">"%B of '%y"</span>) </span><br><span class="line">datetime.datetime(<span class="number">2063</span>, <span class="number">11</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="timedelta-数据类型"><a href="#timedelta-数据类型" class="headerlink" title="timedelta 数据类型"></a>timedelta 数据类型</h3><ul>
+<li>此类型用于表示一段时间的长度<ul>
+<li>其接受关键字参数 weeks, days, hours, minutes, seconds, milliseconds 和 microseconds</li>
+<li>timedelta 对象拥有的总时间以天、秒、微秒来表示。<ul>
+<li>这些数字分别保存 在 days、seconds 和 microseconds 属性中</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>delta = datetime.timedelta(days=<span class="number">11</span>, hours=<span class="number">10</span>, minutes=<span class="number">9</span>, seconds=<span class="number">8</span>) </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>delta.days, delta.seconds, delta.microseconds</span><br><span class="line">(<span class="number">11</span>, <span class="number">36548</span>, <span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>delta.total_seconds() </span><br><span class="line"><span class="number">986948.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>str(delta)</span><br><span class="line"><span class="string">'11 days, 10:09:08'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>借助 timedelta 对象，可以对 datetime 对象进行时间计算</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dt = datetime.datetime.now()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dt</span><br><span class="line">datetime.datetime(<span class="number">2015</span>, <span class="number">2</span>, <span class="number">27</span>, <span class="number">18</span>, <span class="number">38</span>, <span class="number">50</span>, <span class="number">636181</span>) </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>thousandDays = datetime.timedelta(days=<span class="number">1000</span>) </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dt + thousandDays</span><br><span class="line">datetime.datetime(<span class="number">2017</span>, <span class="number">11</span>, <span class="number">23</span>, <span class="number">18</span>, <span class="number">38</span>, <span class="number">50</span>, <span class="number">636181</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="多线程-threading-模块"><a href="#多线程-threading-模块" class="headerlink" title="多线程 threading 模块"></a>多线程 threading 模块</h2><ul>
+<li>借助多线程可以让程序在同一时间并行执行多段代码</li>
+</ul>
+<blockquote>
+<p>Python 的多线程有 GIL 锁，无法实现多核心的充分利用，<strong>多线程是单线程模拟的</strong></p>
+<p>借助多进程 multiprocessing 库可以执行多个进程，避开多线程的 GIL 锁，充分利用多核心</p>
+</blockquote>
+<ul>
+<li><strong>Python 的多线程不适合 CPU 密集型程序，适合 I/O 密集型程序</strong><ul>
+<li>比如适合爬虫</li>
+</ul>
+</li>
+</ul>
+<h3 id="创建新的线程"><a href="#创建新的线程" class="headerlink" title="创建新的线程"></a>创建新的线程</h3><ul>
+<li>使用 threading.Thread(target=目标函数名)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading, time</span><br><span class="line">print(<span class="string">'Start of program.'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">takeANap</span><span class="params">()</span>:</span> </span><br><span class="line">  	time.sleep(<span class="number">5</span>)</span><br><span class="line">		print(<span class="string">'Wake up!'</span>)</span><br><span class="line"></span><br><span class="line">threadObj = threading.Thread(target=takeANap)</span><br><span class="line">threadObj.start() </span><br><span class="line">print(<span class="string">'End of program.'</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Start of program.</span><br><span class="line">End of program.</span><br><span class="line">Wake up!</span><br></pre></td></tr></table></figure>
+<ul>
+<li>向目标线程传递参数和关键字参数<ul>
+<li>注意关键字参数以字典的形式传递</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> threading</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>threadObj = threading.Thread(target=<span class="keyword">print</span>, args=[<span class="string">'Cats'</span>, <span class="string">'Dogs'</span>, <span class="string">'Frogs'</span>], kwargs=&#123;<span class="string">'sep'</span>: <span class="string">' &amp; '</span>&#125;)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>threadObj.start()</span><br><span class="line">Cats &amp; Dogs &amp; Frogs</span><br></pre></td></tr></table></figure>
+<h3 id="等待所有线程结束"><a href="#等待所有线程结束" class="headerlink" title="等待所有线程结束"></a>等待所有线程结束</h3><ul>
+<li>在创建线程的时候同时创建列表来存储所有的线程</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">downloadThreads = [] <span class="comment"># a list of all the Thread objects </span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">1400</span>, <span class="number">100</span>): <span class="comment"># loops 14 times, creates 14 threads</span></span><br><span class="line">    downloadThread = threading.Thread(target=func, args=(i, i + <span class="number">99</span>)) </span><br><span class="line">    downloadThreads.append(downloadThread)</span><br><span class="line">    downloadThread.start()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>等待所有线程</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> downloadThread <span class="keyword">in</span> downloadThreads:</span><br><span class="line">    downloadThread.join()</span><br></pre></td></tr></table></figure>
+<h3 id="subprocess-模块启动其他应用程序"><a href="#subprocess-模块启动其他应用程序" class="headerlink" title="subprocess 模块启动其他应用程序"></a>subprocess 模块启动其他应用程序</h3><ul>
+<li>成员方法 Popen(‘应用程序路径’) 用于启动其他应用程序<ul>
+<li>此方法会返回一个 Popen 对象</li>
+<li>此对象有 poll() 方法<ul>
+<li>应用程序还在执行时此方法将返回 None</li>
+<li>应用程序执行完时此方法返回应用程序退出代码，0 为正常退出</li>
+</ul>
+</li>
+<li>此对象还有 wait() 方法<ul>
+<li>此方法将阻塞代码运行直到 Popen 对象执行完毕</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="向-Popen-传递命令行参数"><a href="#向-Popen-传递命令行参数" class="headerlink" title="向 Popen() 传递命令行参数"></a>向 Popen() 传递命令行参数</h3><ul>
+<li>构造一个列表，第一个元素是应用程序路径，往后的元素为程序参数</li>
+<li>将列表传递给 Popen() 方法，即可传递参数<ul>
+<li>同样，可以借助这个功能运行其他 Python 脚本</li>
+<li>subprocess.Popen([‘C:\\\\python37\\\\python.exe’, ‘D:\\\\aaa.py’])</li>
+</ul>
+</li>
+</ul>
+<h3 id="用默认应用程序打开文件"><a href="#用默认应用程序打开文件" class="headerlink" title="用默认应用程序打开文件"></a>用默认应用程序打开文件</h3><ul>
+<li>每个操作系统都有一个程序，其行为等价于双击文档文件来打开它。<ul>
+<li>在 Windows 上，这是 start 程序</li>
+<li>在 OS X 上，这是 open 程序</li>
+<li>在 Ubuntu Linux 上，这是 see 程序。</li>
+</ul>
+</li>
+<li>在 win 下需要传入 shell=True</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subprocess.Popen([<span class="string">'start'</span>, <span class="string">'hello.txt'</span>], shell=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在 OS X 下</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subprocess.Popen([<span class="string">'open'</span>, <span class="string">'/Applications/Calculator.app/'</span>])</span><br></pre></td></tr></table></figure>
+<h1 id="处理电子邮件"><a href="#处理电子邮件" class="headerlink" title="处理电子邮件"></a>处理电子邮件</h1><h2 id="smtplib-发送电子邮件"><a href="#smtplib-发送电子邮件" class="headerlink" title="smtplib 发送电子邮件"></a>smtplib 发送电子邮件</h2><ul>
+<li><p>SMTP 只用来发送邮件</p>
+</li>
+<li><p>借助 smtplib.SMTP(‘ip’, 587) 创建 SMTP 连接对象</p>
+</li>
+<li><strong>有的 SMTP 服务器可能不支持 TLS 加密</strong><ul>
+<li>这时候用 smtplib.SMTP_SSL(‘ip’, 465) 来创建连接</li>
+</ul>
+</li>
+</ul>
+<h3 id="测试对象是否连接成功"><a href="#测试对象是否连接成功" class="headerlink" title="测试对象是否连接成功"></a>测试对象是否连接成功</h3><ul>
+<li>smtpObj.ehlo() 用于测试连接</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>smtpObj.ehlo()</span><br><span class="line">(<span class="number">250</span>, <span class="string">b'mx.google.com at your service, [216.172.148.131]\nSIZE 35882577\ n8BITMIME\nSTARTTLS\nENHANCEDSTATUSCODES\nCHUNKING'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="启动-TLS-加密"><a href="#启动-TLS-加密" class="headerlink" title="启动 TLS 加密"></a>启动 TLS 加密</h3><ul>
+<li>如果连接的是 SSL 则不需要设置加密</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">smtpObj.starttls()</span><br></pre></td></tr></table></figure>
+<h3 id="登陆-SMTP-服务器"><a href="#登陆-SMTP-服务器" class="headerlink" title="登陆 SMTP 服务器"></a>登陆 SMTP 服务器</h3><ul>
+<li>直接用 login(‘邮箱’, ‘密码’) 登陆即可</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">smtpObj.login(<span class="string">'aaaa@gmail.com'</span>, <span class="string">'ThisIsPasswd'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="发送电子邮件"><a href="#发送电子邮件" class="headerlink" title="发送电子邮件"></a>发送电子邮件</h3><ul>
+<li>使用方法 sendmail(‘邮箱’, ‘接收方邮箱’, ‘内容’)<ul>
+<li>接收方邮箱也可以是个列表，作为多个接受人</li>
+<li><strong>邮件内容必须以’Subject: …… \n’ 开头，作为标题</strong></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">smtpObj.sendmail(<span class="string">'my_email_address@gmail.com'</span>, <span class="string">'recipient@example.com'</span>, <span class="string">'Subject: So long.\nDear Alice, so long and thanks for all the fish. Sincerely, Bob'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="断开连接"><a href="#断开连接" class="headerlink" title="断开连接"></a>断开连接</h3><ul>
+<li>使用成员方法 quit()</li>
+</ul>
+<h2 id="imapclient-和-pyzmail"><a href="#imapclient-和-pyzmail" class="headerlink" title="imapclient 和 pyzmail"></a>imapclient 和 pyzmail</h2><ul>
+<li>imapclient 用于连接接收邮件的服务</li>
+<li>pyzmail 用于解析邮件内容</li>
+</ul>
+<h3 id="连接到-IMAP-服务"><a href="#连接到-IMAP-服务" class="headerlink" title="连接到 IMAP 服务"></a>连接到 IMAP 服务</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> imapclient</span><br><span class="line">imapObj = imapclient.IMAPClient(<span class="string">"imap.gmail.com', ssl=True)</span></span><br></pre></td></tr></table></figure>
+<h3 id="登陆到-IMAP-服务器"><a href="#登陆到-IMAP-服务器" class="headerlink" title="登陆到 IMAP 服务器"></a>登陆到 IMAP 服务器</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">imapObj.login(<span class="string">'aaaa@gmail.com'</span>, <span class="string">'密码'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="选择文件夹"><a href="#选择文件夹" class="headerlink" title="选择文件夹"></a>选择文件夹</h3><ul>
+<li>借助对象的成员方法 list_folders() 列出所有文件夹</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pprint.pprint(imapObj.list_folders())</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[((<span class="string">'\\HasNoChildren'</span>,), <span class="string">'/'</span>, <span class="string">'Drafts'</span>),</span><br><span class="line">((<span class="string">'\\HasNoChildren'</span>,), <span class="string">'/'</span>, <span class="string">'Filler'</span>), </span><br><span class="line">((<span class="string">'\\HasNoChildren'</span>,), <span class="string">'/'</span>, <span class="string">'INBOX'</span>), </span><br><span class="line">((<span class="string">'\\HasNoChildren'</span>,), <span class="string">'/'</span>, <span class="string">'Sent'</span>),</span><br><span class="line">--snip--</span><br><span class="line">((<span class="string">'\\HasNoChildren'</span>, <span class="string">'\\Flagged'</span>), <span class="string">'/'</span>, <span class="string">'[Gmail]/Starred'</span>), </span><br><span class="line">((<span class="string">'\\HasNoChildren'</span>, <span class="string">'\\Trash'</span>), <span class="string">'/'</span>, <span class="string">'[Gmail]/Trash'</span>)]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用 select_folder(‘文件夹名’, readonly=True)<ul>
+<li>readonly 用于控制是否只读，True 为只读，不可删除邮件</li>
+</ul>
+</li>
+</ul>
+<h3 id="搜索邮件"><a href="#搜索邮件" class="headerlink" title="搜索邮件"></a>搜索邮件</h3><ul>
+<li>使用成员方法 search([‘搜索键1’, ‘搜索键2’, …])<ul>
+<li>此方法返回一个 ID 列表，表示满足条件的邮件的 ID</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>UIDs = imapObj.search([<span class="string">'SINCE 05-Jul-2015'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>UIDs</span><br><span class="line">[<span class="number">40032</span>, <span class="number">40033</span>, <span class="number">40034</span>, <span class="number">40035</span>, <span class="number">40036</span>, <span class="number">40037</span>, <span class="number">40038</span>, <span class="number">40039</span>, <span class="number">40040</span>, <span class="number">40041</span>]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>支持的搜索键</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>搜索键</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>‘ALL’</td>
+<td>文件夹中的全部邮件</td>
+</tr>
+<tr>
+<td>‘BEFORE 05-Jul-2015’</td>
+<td>在 05-Jul-2015 之前</td>
+</tr>
+<tr>
+<td>‘ON 05-Jul-2015’</td>
+<td>在 05-Jul-2015</td>
+</tr>
+<tr>
+<td>‘SINCE 05-Jul-2015’</td>
+<td>在 05-Jul-2015 之后</td>
+</tr>
+<tr>
+<td>‘SUBJECT string’</td>
+<td>主题中出现 string 的邮件，<strong>string 中有空格就用双引号阔起来</strong></td>
+</tr>
+<tr>
+<td>‘BODY string’</td>
+<td>正文中出现 string 的邮件</td>
+</tr>
+<tr>
+<td>‘TEXT string’</td>
+<td>主题和正文中出现 string 的邮件</td>
+</tr>
+<tr>
+<td>‘FROM string’</td>
+<td>发送地址中有 string 的邮件</td>
+</tr>
+<tr>
+<td>‘TO string’</td>
+<td>接收地址中有 string 的邮件</td>
+</tr>
+<tr>
+<td>‘CC string’</td>
+<td>抄送地址中有 string 的邮件</td>
+</tr>
+<tr>
+<td>‘BCC string’</td>
+<td>密件抄送地址中有 string 的邮件</td>
+</tr>
+<tr>
+<td>‘SEEN’</td>
+<td>已阅邮件</td>
+</tr>
+<tr>
+<td>‘UNSEEN’</td>
+<td>未读邮件</td>
+</tr>
+<tr>
+<td>‘ANSWERED’</td>
+<td>已回复邮件</td>
+</tr>
+<tr>
+<td>‘UNANSWERED’</td>
+<td>未回复邮件</td>
+</tr>
+<tr>
+<td>‘DELETED’</td>
+<td>删除掉的邮件（一般的邮件提供商都会直接删除）</td>
+</tr>
+<tr>
+<td>‘UNDELETED’</td>
+<td>未删除掉的邮件</td>
+</tr>
+<tr>
+<td>‘DRAFT’</td>
+<td>草稿邮件</td>
+</tr>
+<tr>
+<td>‘UNDRAFT’</td>
+<td>非草稿邮件</td>
+</tr>
+<tr>
+<td>‘FLAGGED’</td>
+<td>星标邮件</td>
+</tr>
+<tr>
+<td>‘UNFLAGGED’</td>
+<td>非星标邮件</td>
+</tr>
+<tr>
+<td>‘LAEGER n’</td>
+<td>大于 n 字节的所有邮件</td>
+</tr>
+<tr>
+<td>‘SMALLER n’</td>
+<td>小于 n 字节的所有邮件</td>
+</tr>
+<tr>
+<td>‘NOT 搜索键’</td>
+<td>返回搜索键查到的之外的邮件</td>
+</tr>
+<tr>
+<td>‘OR 搜索键1 搜索键2’</td>
+<td>返回满足两个搜索键之一的邮件</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="大小限制"><a href="#大小限制" class="headerlink" title="大小限制"></a>大小限制</h3><ul>
+<li>异常 imaplib.error: got more than 10000 bytes 表示读取超过了限制的字节<ul>
+<li>使用 imaplib._MAXLINE = 1000000 等类似的方式进行修改</li>
+</ul>
+</li>
+</ul>
+<h3 id="获取电子邮件内容"><a href="#获取电子邮件内容" class="headerlink" title="获取电子邮件内容"></a>获取电子邮件内容</h3><ul>
+<li>使用 fetch(ID列表, [‘BODY[]’]) 来获取电子邮件内容</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>rawMessages = imapObj.fetch(UIDs, [<span class="string">'BODY[]'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pprint</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pprint.pprint(rawMessages)</span><br><span class="line">&#123;<span class="number">40040</span>: &#123;<span class="string">'BODY[]'</span>: <span class="string">'Delivered-To: my_email_address@gmail.com\r\n'</span></span><br><span class="line">									 <span class="string">'Received: by 10.76.71.167 with SMTP id '</span></span><br><span class="line">--snip--</span><br></pre></td></tr></table></figure>
+<h3 id="借助-pyzmail-解析邮件信息"><a href="#借助-pyzmail-解析邮件信息" class="headerlink" title="借助 pyzmail 解析邮件信息"></a>借助 pyzmail 解析邮件信息</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pyzmail</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>message = pyzmail.PyzMessage.factory(rawMessages[<span class="number">40041</span>][<span class="string">'BODY[]'</span>])</span><br></pre></td></tr></table></figure>
+<ul>
+<li>得到解析对象后可以据此提取邮件信息</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>message.get_subject()</span><br><span class="line"><span class="string">'Hello!'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>message.get_addresses(<span class="string">'from'</span>)</span><br><span class="line">[(<span class="string">'Edward Snowden'</span>, <span class="string">'esnowden@nsa.gov'</span>)] </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>message.get_addresses(<span class="string">'to'</span>)</span><br><span class="line">[(Jane Doe<span class="string">', '</span>my_email_address@gmail.com<span class="string">')] </span></span><br><span class="line"><span class="string">&gt;&gt;&gt; message.get_addresses('</span>cc<span class="string">')</span></span><br><span class="line"><span class="string">[]</span></span><br><span class="line"><span class="string">&gt;&gt;&gt; message.get_addresses('</span>bcc<span class="string">')</span></span><br><span class="line"><span class="string">[]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>电子邮件可以是 纯文本，也可以是 HTML 网页</li>
+<li><p>如果是纯文本的，解析对象的 html_part 为 None</p>
+<ul>
+<li>同样如果只是 HTML 则 text_part 为 None</li>
+</ul>
+</li>
+<li><p>借助 text_part 和 html_part 的 get_payload() 方法可以得到电子邮件正文的 bytes 内容</p>
+<ul>
+<li>使用其 decode() 方法传入 message.text_part.charset 编码可以解码为我们需要的内容</li>
+</ul>
+</li>
+</ul>
+<h3 id="删除电子邮件"><a href="#删除电子邮件" class="headerlink" title="删除电子邮件"></a>删除电子邮件</h3><ul>
+<li>使用 imap 连接对象的 delect_message(ID列表) 可以将邮件打上删除标记</li>
+<li>再使用 expunge() 方法彻底删除邮件</li>
+</ul>
+<h3 id="从-IMAP-服务器断开"><a href="#从-IMAP-服务器断开" class="headerlink" title="从 IMAP 服务器断开"></a>从 IMAP 服务器断开</h3><ul>
+<li>使用 imap 连接对象的 logout() 方法</li>
+</ul>
+<h1 id="键鼠自动化-Pyautogui"><a href="#键鼠自动化-Pyautogui" class="headerlink" title="键鼠自动化 Pyautogui"></a>键鼠自动化 Pyautogui</h1><h2 id="模块安装"><a href="#模块安装" class="headerlink" title="模块安装"></a>模块安装</h2><ul>
+<li>在 Windows 上，不需要安装其他模块。</li>
+<li>在 OS X 上需要先安装别的依赖模块<ul>
+<li>sudo pip3 install pyobjc-framework-Quartz</li>
+<li>sudo pip3 install pyobjc-core</li>
+<li>sudo pip3 install pyobjc。</li>
+</ul>
+</li>
+<li>在 Linux 上<ul>
+<li>sudo pip3 install python3-xlib</li>
+<li>sudo apt-get install scrot (Scrot 是PyAutoGUI 使用的屏幕快照程序)。</li>
+<li>sudo apt-get install python3-tk</li>
+<li>sudo apt-get install python3-dev</li>
+</ul>
+</li>
+</ul>
+<h2 id="暂停和自动防故障"><a href="#暂停和自动防故障" class="headerlink" title="暂停和自动防故障"></a>暂停和自动防故障</h2><ul>
+<li>在每次函数调用后出现问题时能够有足够的暂停时间来控制键鼠</li>
+<li>将 pyautogui.PAUSE 设置为 1.5 可以让 pyautogui 执行完动作后等待 1.5 秒</li>
+<li>将鼠标移动到屏幕左上角会导致 pyautogui.FailSafeException 异常<ul>
+<li>借助这个功能可以停止程序，也可以用 try except 来处理异常</li>
+<li>设置 pyautogui.FAILSAFE = False 来禁止异常</li>
+</ul>
+</li>
+</ul>
+<h2 id="控制鼠标移动"><a href="#控制鼠标移动" class="headerlink" title="控制鼠标移动"></a>控制鼠标移动</h2><ul>
+<li>屏幕以左上角为原点<ul>
+<li>向右 x 坐标递增</li>
+<li>向下 y 坐标递增</li>
+<li><strong>最大值为对应分辨率减 1</strong> </li>
+</ul>
+</li>
+<li>成员方法 size() 返回屏幕的分辨率</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pyautogui</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pyautogui.size()</span><br><span class="line">(<span class="number">1920</span>, <span class="number">1080</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>width, height = pyautogui.size()</span><br></pre></td></tr></table></figure>
+<h3 id="移动鼠标"><a href="#移动鼠标" class="headerlink" title="移动鼠标"></a>移动鼠标</h3><ul>
+<li><p>成员方法 moveTo(x, y, duration=0.25) 表示花费 0.25 秒将鼠标移动到<strong>绝对坐标</strong> (x, y) 的位置</p>
+</li>
+<li><p>成员方法 moveRel(x, y, duration) 则为相对鼠标位置加上 (x, y) 的位置</p>
+</li>
+</ul>
+<h3 id="获取鼠标位置"><a href="#获取鼠标位置" class="headerlink" title="获取鼠标位置"></a>获取鼠标位置</h3><ul>
+<li>成员方法 position()</li>
+<li>返回鼠标坐标信息的对象<ul>
+<li>借助 tuple() 可以转换为元组</li>
+</ul>
+</li>
+</ul>
+<h2 id="控制鼠标交互"><a href="#控制鼠标交互" class="headerlink" title="控制鼠标交互"></a>控制鼠标交互</h2><ul>
+<li>点击可以借助 click(x, y, button=’left’) 方法，来实现一次点下鼠标左键并抬起</li>
+<li><p>同样也可以直接使用 mouseDown() 和 mouseUp() 来实现在当前位置按下和抬起左键的效果</p>
+</li>
+<li><p>双击可以用 doubleClick() 来实现双击鼠标左键</p>
+<ul>
+<li>rightClick() 是右键双击</li>
+<li>middleClick() 是中键双击</li>
+</ul>
+</li>
+</ul>
+<h3 id="拖动鼠标"><a href="#拖动鼠标" class="headerlink" title="拖动鼠标"></a>拖动鼠标</h3><ul>
+<li>成员方法 dragTo() 和 dragRel() 的使用方法和 moveTo() 与 moveRel() 类似<ul>
+<li>此方法表示拖动鼠标到指定位置</li>
+<li><strong>OSX拖动不能太快，可能会出错</strong> </li>
+</ul>
+</li>
+</ul>
+<h3 id="滚动鼠标"><a href="#滚动鼠标" class="headerlink" title="滚动鼠标"></a>滚动鼠标</h3><ul>
+<li>成员函数 scroll(滚动整数值) 用来模拟滚动鼠标<ul>
+<li>正值表示向上滚动，负值表示向下滚动</li>
+</ul>
+</li>
+</ul>
+<h2 id="处理屏幕"><a href="#处理屏幕" class="headerlink" title="处理屏幕"></a>处理屏幕</h2><h3 id="获取屏幕截图"><a href="#获取屏幕截图" class="headerlink" title="获取屏幕截图"></a>获取屏幕截图</h3><ul>
+<li>借助 screenshot() 方法，此方法返回一个 Image 对象</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pyautogui</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>im = pyautogui.screenshot()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>借助 getpixel(x, y) 可以获取 (x, y) 处的 RGB 颜色信息元组</li>
+<li>借助 Pillow 库可以处理图像</li>
+</ul>
+<h3 id="分析屏幕快照"><a href="#分析屏幕快照" class="headerlink" title="分析屏幕快照"></a>分析屏幕快照</h3><ul>
+<li>借助 pixelMatchesColor(x, y, RGB 颜色信息元组) 可以比对屏幕上指定坐标处的颜色是否与给定的相同</li>
+</ul>
+<h2 id="图像识别"><a href="#图像识别" class="headerlink" title="图像识别"></a>图像识别</h2><ul>
+<li>成员方法 locateOnScreen(‘图像路径’) 可以让程序自动在屏幕截图查找给定图像的坐标信息<ul>
+<li>将返回一个元组，四个值分别是发现该图像时左边的 x 坐标、顶边的 y 坐标、宽度以及高度</li>
+<li>如果找到多处匹配的图片，将返回一个 Generator 对象，用 list() 将其转型成列表</li>
+<li>将得到的元组传递给 pyautogui.center() 可以获得图像中心的坐标</li>
+</ul>
+</li>
+<li><strong>如果没有找到的时候返回 None</strong> </li>
+</ul>
+<h2 id="控制键盘"><a href="#控制键盘" class="headerlink" title="控制键盘"></a>控制键盘</h2><ul>
+<li>成员方法 typewrite(‘需要按下的字符’) 可以模拟在键盘上按下这些字符<ul>
+<li>typewrite(‘需要按下的字符’, 每个字符间的延迟) 可以设置各个字符键的按下延迟</li>
+<li><strong>大写字符或是符号相当于按下 Shift 键 再按下对应的键位</strong></li>
+<li>typewrite() 还能传递需要按下的字符的列表<ul>
+<li>例如 pyautogui.typewrite([‘a’, ‘b’, ‘left’, ‘left’, ‘X’, ‘Y’])</li>
+<li>‘left’ 表示按下鼠标左键</li>
+</ul>
+</li>
+<li>pyautogui.KEYBOARD_KEYS 可以看到其能接受的所有键字符串</li>
+</ul>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>键字符串</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>‘enter’</td>
+<td>回车键</td>
+</tr>
+<tr>
+<td>‘esc’</td>
+<td>Esc</td>
+</tr>
+<tr>
+<td>‘shiftleft’,’ shiftright’</td>
+<td>两侧 Shift 键</td>
+</tr>
+<tr>
+<td>‘altleft’, ‘altright’</td>
+<td>两侧 Alt 键</td>
+</tr>
+<tr>
+<td>‘ctrlleft’, ‘ctrlright’</td>
+<td>两侧 Ctrl 键</td>
+</tr>
+<tr>
+<td>‘tab’</td>
+<td>Tab</td>
+</tr>
+<tr>
+<td>‘backspace’</td>
+<td>退格键</td>
+</tr>
+<tr>
+<td>‘delete’</td>
+<td>删除键</td>
+</tr>
+<tr>
+<td>‘pageup’, ‘pagedown’</td>
+<td>Page Up 和 Page Down</td>
+</tr>
+<tr>
+<td>‘home’, ‘end’</td>
+<td>Home 和 End</td>
+</tr>
+<tr>
+<td>‘up’, ‘down’, ‘left’, ‘right’</td>
+<td>上下左右箭头键</td>
+</tr>
+<tr>
+<td>‘f1’, ‘f2’, ‘f3’ …</td>
+<td>F1 到 F12</td>
+</tr>
+<tr>
+<td>‘volumemute’, ‘volumedown’, ‘volumeup’</td>
+<td>音量键</td>
+</tr>
+<tr>
+<td>‘pause’</td>
+<td>暂停键</td>
+</tr>
+<tr>
+<td>‘capslock’, ‘numlock’, ‘scrolllock’</td>
+<td>三个键盘锁</td>
+</tr>
+<tr>
+<td>‘insert’</td>
+<td>Insert 键</td>
+</tr>
+<tr>
+<td>‘printscreen’</td>
+<td>截屏</td>
+</tr>
+<tr>
+<td>‘winleft’, ‘winright’</td>
+<td>左右 Win 键</td>
+</tr>
+<tr>
+<td>‘command’</td>
+<td>Command 键</td>
+</tr>
+<tr>
+<td>‘option’</td>
+<td>Option 键</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="键盘组合"><a href="#键盘组合" class="headerlink" title="键盘组合"></a>键盘组合</h3><ul>
+<li>成员方法 keyDown(‘按键’) 和 keyUp(‘按键’) 可以模拟键盘按下和抬起</li>
+<li>也可以用 hotkey(‘按键1’, ‘按键2’, ……) 来模拟组合键</li>
+</ul>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:bi0x@foxmail.com">Bi0x</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://www.bi0x.cn/2020/04/13/python1/">http://www.bi0x.cn/2020/04/13/python1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://www.bi0x.cn" target="_blank">Bi0x</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python/">Python    </a></div><div class="post_share"><div class="social-share" data-image="/images/pasted-9.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/wechat.jpg" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/alipay.jpg" alt="支付宝"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="next-post pull-full"><a href="/2020/04/02/reverse1/"><img class="next_cover lazyload" data-src="/images/pasted-36.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">逆...逆不出来了</div></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: false,
+  verify: false,
+  appId: 'J91TT6tmiySm3lUixVOE4CbJ-gzGzoHsz',
+  appKey: 'MidtPXnwEq70NCNqga98erKe',
+  placeholder: 'Please leave your footprints',
+  avatar: 'monsterid',
+  meta: guest_info,
+  pageSize: '10',
+  lang: 'zh-cn',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By Bi0x</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="footer_custom_text">到这里结束了呢</div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/third-party/click_heart.js"></script><script>if (document.getElementsByClassName('mermaid').length) {
+  loadScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js',function () {
+    mermaid.initialize({
+      theme: 'default',
+  })
+})
+}</script></body></html>
