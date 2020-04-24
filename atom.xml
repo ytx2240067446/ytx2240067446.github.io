@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Bi0x</title>
+  <icon>https://www.gravatar.com/avatar/adca779e8a019173060c630ba132d2f6</icon>
+  <subtitle>欠了一堆事情呢</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://www.bi0x.cn/"/>
+  <updated>2020-04-19T09:17:10.691Z</updated>
+  <id>http://www.bi0x.cn/</id>
+  
+  <author>
+    <name>Bi0x</name>
+    <email>bi0x@foxmail.com</email>
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>0x01 - 2020虎符CTF记录</title>
+    <link href="http://www.bi0x.cn/2020/04/19/wp-hfctf2020/"/>
+    <id>http://www.bi0x.cn/2020/04/19/wp-hfctf2020/</id>
+    <published>2020-04-19T08:27:00.000Z</published>
+    <updated>2020-04-19T09:17:10.691Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;太顶了，实力还是 8 行&lt;/li&gt;
+&lt;li&gt;有机会还是想补补题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;Re-game&quot;&gt;&lt;a href=&quot;#Re-game&quot; class=&quot;headerlink&quot; title=&quot;Re - game&quot;&gt;&lt;/a&gt;Re -
+        
+      
+    
+    </summary>
+    
+    
+      <category term="CTF" scheme="http://www.bi0x.cn/categories/CTF/"/>
+    
+    
+      <category term="WP" scheme="http://www.bi0x.cn/tags/WP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>0x01 - 做题记录 (1)</title>
+    <link href="http://www.bi0x.cn/2020/04/14/wp1/"/>
+    <id>http://www.bi0x.cn/2020/04/14/wp1/</id>
+    <published>2020-04-13T17:42:00.000Z</published>
+    <updated>2020-04-15T03:20:35.002Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;RIP&quot;&gt;&lt;a href=&quot;#RIP&quot; class=&quot;headerlink&quot; title=&quot;RIP&quot;&gt;&lt;/a&gt;RIP&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;拿 IDA 看 s 的 buf 大小为 0xF，故需要覆盖到返回地址为 0xF+8，即 23&lt;/li&gt;
+&lt;li&gt;找到
+        
+      
+    
+    </summary>
+    
+    
+      <category term="CTF" scheme="http://www.bi0x.cn/categories/CTF/"/>
+    
+    
+      <category term="WP" scheme="http://www.bi0x.cn/tags/WP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>蟒蛇们</title>
+    <link href="http://www.bi0x.cn/2020/04/13/python1/"/>
+    <id>http://www.bi0x.cn/2020/04/13/python1/</id>
+    <published>2020-04-13T02:08:00.000Z</published>
+    <updated>2020-04-13T02:16:23.271Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;正则表达式&quot;&gt;&lt;a href=&quot;#正则表达式&quot; class=&quot;headerlink&quot; title=&quot;正则表达式&quot;&gt;&lt;/a&gt;正则表达式&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;正则表达式通常用来实现文本匹配功能&lt;/li&gt;
+&lt;li&gt;例如需要一个类似 415-555-4242
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Development" scheme="http://www.bi0x.cn/categories/Development/"/>
+    
+    
+      <category term="Python" scheme="http://www.bi0x.cn/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>逆...逆不出来了</title>
+    <link href="http://www.bi0x.cn/2020/04/02/reverse1/"/>
+    <id>http://www.bi0x.cn/2020/04/02/reverse1/</id>
+    <published>2020-04-02T15:44:00.000Z</published>
+    <updated>2020-04-13T02:17:21.731Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;基础知识&quot;&gt;&lt;a href=&quot;#基础知识&quot; class=&quot;headerlink&quot; title=&quot;基础知识&quot;&gt;&lt;/a&gt;基础知识&lt;/h1&gt;&lt;h2 id=&quot;字符编码&quot;&gt;&lt;a href=&quot;#字符编码&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="CTF" scheme="http://www.bi0x.cn/categories/CTF/"/>
+    
+    
+      <category term="Re" scheme="http://www.bi0x.cn/tags/Re/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>各种栈溢出</title>
+    <link href="http://www.bi0x.cn/2020/03/31/stack-overflow/"/>
+    <id>http://www.bi0x.cn/2020/03/31/stack-overflow/</id>
+    <published>2020-03-30T18:11:00.000Z</published>
+    <updated>2020-04-13T17:41:07.578Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;不是给 Stack Overflow 打广告呢&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;基本栈溢出&quot;&gt;&lt;a href=&quot;#基本栈溢出&quot; class=&quot;headerlink&quot; title=&quot;基本栈溢出&quot;&gt;&lt;/a&gt;基本栈溢出&lt;/h1&gt;&lt;h2
+        
+      
+    
+    </summary>
+    
+    
+      <category term="CTF" scheme="http://www.bi0x.cn/categories/CTF/"/>
+    
+    
+      <category term="Pwn" scheme="http://www.bi0x.cn/tags/Pwn/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>格式化字符串漏洞</title>
+    <link href="http://www.bi0x.cn/2020/03/28/fmtpwn1/"/>
+    <id>http://www.bi0x.cn/2020/03/28/fmtpwn1/</id>
+    <published>2020-03-28T13:35:00.000Z</published>
+    <updated>2020-03-30T15:18:55.273Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;这里讲的漏洞是基于 C 的&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;内容参考了 CTF Wiki，做了修改和补充&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;格式化字符串&quot;&gt;&lt;a href=&quot;#格式化字符串&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="CTF" scheme="http://www.bi0x.cn/categories/CTF/"/>
+    
+    
+      <category term="Pwn" scheme="http://www.bi0x.cn/tags/Pwn/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VSCode 远程开发</title>
+    <link href="http://www.bi0x.cn/2020/03/25/vscode-remote-development/"/>
+    <id>http://www.bi0x.cn/2020/03/25/vscode-remote-development/</id>
+    <published>2020-03-24T17:02:00.000Z</published>
+    <updated>2020-03-24T17:36:11.348Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;适用场景：&lt;ul&gt;
+&lt;li&gt;代码需要在远程服务器上运行，需要大量修改测试时可以节省很多琐碎的操作&lt;/li&gt;
+&lt;li&gt;代码需要在虚拟机中运行，但是频繁的需要切入切出虚拟机时，使用VSCode可以节省很多琐碎的操作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;此方法基
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Development" scheme="http://www.bi0x.cn/categories/Development/"/>
+    
+    
+      <category term="VSCode" scheme="http://www.bi0x.cn/tags/VSCode/"/>
+    
+  </entry>
+  
+</feed>
