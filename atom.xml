@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.bi0x.cn/"/>
-  <updated>2020-04-19T09:17:10.691Z</updated>
+  <updated>2020-04-25T11:39:57.946Z</updated>
   <id>http://www.bi0x.cn/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>0x02 2020安恒4月月赛记录</title>
+    <link href="http://www.bi0x.cn/2020/04/25/wp-dasctf202004/"/>
+    <id>http://www.bi0x.cn/2020/04/25/wp-dasctf202004/</id>
+    <published>2020-04-25T10:57:00.000Z</published>
+    <updated>2020-04-25T11:39:57.946Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Re简单是真滴简单，难是真滴难&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;font size=2&gt;&lt;del&gt;做一半睡着了&lt;/del&gt;&lt;/font&gt;
+
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;Re-入门reverse&quot;&gt;&lt;a href=&quot;#Re-入门reverse&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="CTF" scheme="http://www.bi0x.cn/categories/CTF/"/>
+    
+    
+      <category term="WP" scheme="http://www.bi0x.cn/tags/WP/"/>
+    
+  </entry>
   
   <entry>
     <title>0x01 - 2020虎符CTF记录</title>
