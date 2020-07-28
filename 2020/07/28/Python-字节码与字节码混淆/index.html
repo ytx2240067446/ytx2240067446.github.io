@@ -1,0 +1,473 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Python 字节码与字节码混淆 | Bi0x</title><meta name="description" content="Python 字节码与字节码混淆"><meta name="keywords" content="Re"><meta name="author" content="Bi0x,bi0x@foxmail.com"><meta name="copyright" content="Bi0x"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon1.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Python 字节码与字节码混淆"><meta name="twitter:description" content="Python 字节码与字节码混淆"><meta name="twitter:image" content="http://blog.bi0x.cn/images/pasted-49.png"><meta property="og:type" content="article"><meta property="og:title" content="Python 字节码与字节码混淆"><meta property="og:url" content="http://blog.bi0x.cn/2020/07/28/Python-%E5%AD%97%E8%8A%82%E7%A0%81%E4%B8%8E%E5%AD%97%E8%8A%82%E7%A0%81%E6%B7%B7%E6%B7%86/"><meta property="og:site_name" content="Bi0x"><meta property="og:description" content="Python 字节码与字节码混淆"><meta property="og:image" content="http://blog.bi0x.cn/images/pasted-49.png"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      now = new Date();
+      hour = now.getHours();
+      isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><link rel="canonical" href="http://blog.bi0x.cn/2020/07/28/Python-%E5%AD%97%E8%8A%82%E7%A0%81%E4%B8%8E%E5%AD%97%E8%8A%82%E7%A0%81%E6%B7%B7%E6%B7%86/"><link rel="next" title="0x02 - 2020安恒4月月赛记录" href="http://blog.bi0x.cn/2020/04/25/wp-dasctf202004/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://blog.bi0x.cn/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    title: 'Snackbar.bookmark.title',
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: {"bookmark":{"title":"Snackbar.bookmark.title","message_prev":"按","message_next":"键将本页加入书签"},"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-left"},
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: false,
+  isFontAwesomeV5: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false
+}</script><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Bi0x" type="application/atom+xml">
+</head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">9</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">5</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 小伙伴</span></a></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Python-字节码"><span class="toc-number">1.</span> <span class="toc-text">Python 字节码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#常见指令"><span class="toc-number">1.1.</span> <span class="toc-text">常见指令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pyc-文件解析"><span class="toc-number">2.</span> <span class="toc-text">Pyc 文件解析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#字节码混淆"><span class="toc-number">3.</span> <span class="toc-text">字节码混淆</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Anti-uncompyle6"><span class="toc-number">3.1.</span> <span class="toc-text">Anti-uncompyle6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Anti-dis"><span class="toc-number">3.2.</span> <span class="toc-text">Anti-dis</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动态创建内置类型"><span class="toc-number">4.</span> <span class="toc-text">动态创建内置类型</span></a></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(/images/pasted-49.png)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">Bi0x</a></span><span class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 小伙伴</span></a></div></div></span></div><div id="post-info"><div id="post-title"><div class="posttitle">Python 字节码与字节码混淆</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2020-07-28<span class="post-meta__separator">|</span><i class="fa fa-history" aria-hidden="true"></i> 更新于 2020-07-28</time><span class="post-meta__separator">|</span><span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/CTF/">CTF</a></span><div class="post-meta-wordcount"><i class="post-meta__icon fa fa-file-word-o" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">3.8k</span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-clock-o" aria-hidden="true"></i><span>阅读时长: 17 分钟</span><div class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="/2020/07/28/Python-%E5%AD%97%E8%8A%82%E7%A0%81%E4%B8%8E%E5%AD%97%E8%8A%82%E7%A0%81%E6%B7%B7%E6%B7%86/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2020/07/28/Python-%E5%AD%97%E8%8A%82%E7%A0%81%E4%B8%8E%E5%AD%97%E8%8A%82%E7%A0%81%E6%B7%B7%E6%B7%86/" itemprop="commentCount"></span></a></div></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><h1 id="Python-字节码"><a href="#Python-字节码" class="headerlink" title="Python 字节码"></a>Python 字节码</h1><ul>
+<li>虽然 Python 作为解释型语言，但是其也不是直接对源代码进行解释<ul>
+<li>Python 解释器会将源代码处理成字节码后，借助 Python 解释器运行程序</li>
+</ul>
+</li>
+<li>通过 Python 自带的模块 dis 可以将目标函数转换成字节码</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> dis</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span><span class="params">(x, y, z)</span>:</span></span><br><span class="line">    a = <span class="number">1</span></span><br><span class="line">    a += <span class="number">1</span></span><br><span class="line">    print(<span class="string">"aaa"</span>)</span><br><span class="line">    fun(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">dis.dis(fun)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>控制台输出内容如下</p>
+<ul>
+<li>第一列对应的是源代码中的行号</li>
+<li>第二列对应的是源代码转化成的字节码</li>
+<li>第三列为此次操作对应的值（括号内为具体值）</li>
+</ul>
+</li>
+<li><ul>
+<li></li>
+</ul>
+</li>
+<li>例如第六行<ul>
+<li>解释器先读取了全局对象 <code>print</code> 函数，推入程序栈</li>
+<li>程序又将字符串 <code>&#39;aaa&#39;</code> 推入程序栈</li>
+<li>调用函数，并解释只有 1 个变量，解释器便会将栈顶的 1 个变量传递给函数，然后调用函数<ul>
+<li><strong>需要注意，如果有多个参数的话，参数入栈顺序是从左到右，也就是最右边的参数在最顶端</strong></li>
+<li><code>CALL_FUNCTION</code> 会在结束后弹出栈顶对应参数数量的元素，但是函数不会被弹出栈，因此最后有一个 <code>POP_TOP</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&gt; python3 -u <span class="string">"/Users/biox/NutStore/Codes/VSCode/python/py1.py"</span></span><br><span class="line">  4           0 LOAD_CONST               1 (1)</span><br><span class="line">              2 STORE_FAST               3 (a)</span><br><span class="line"></span><br><span class="line">  5           4 LOAD_FAST                3 (a)</span><br><span class="line">              6 LOAD_CONST               1 (1)</span><br><span class="line">              8 INPLACE_ADD</span><br><span class="line">             10 STORE_FAST               3 (a)</span><br><span class="line"></span><br><span class="line">  6          12 LOAD_GLOBAL              0 (<span class="built_in">print</span>)</span><br><span class="line">             14 LOAD_CONST               2 (<span class="string">'aaa'</span>)</span><br><span class="line">             16 CALL_FUNCTION            1</span><br><span class="line">             18 POP_TOP</span><br><span class="line"></span><br><span class="line">  7          20 LOAD_GLOBAL              1 (fun)</span><br><span class="line">             22 LOAD_CONST               1 (1)</span><br><span class="line">             24 LOAD_CONST               3 (2)</span><br><span class="line">             26 LOAD_CONST               4 (3)</span><br><span class="line">             28 CALL_FUNCTION            3</span><br><span class="line">             30 POP_TOP</span><br><span class="line"></span><br><span class="line">  8          32 LOAD_CONST               0 (None)</span><br><span class="line">             34 RETURN_VALUE</span><br></pre></td></tr></table></figure>
+<h2 id="常见指令"><a href="#常见指令" class="headerlink" title="常见指令"></a>常见指令</h2><ul>
+<li><p>详细内容见<a href="https://docs.python.org/zh-cn/3.6/library/dis.html#python-bytecode-instructions" target="_blank" rel="noopener">官方文档</a></p>
+</li>
+<li><p>一般指令与一元操作指令</p>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NOP</td>
+<td>无作用，用于占位</td>
+</tr>
+<tr>
+<td>POP_TOP</td>
+<td>弹出栈顶元素</td>
+</tr>
+<tr>
+<td>LOAD_CONST</td>
+<td>将读取的值推入栈</td>
+</tr>
+<tr>
+<td>LOAD_GLOBAL</td>
+<td>将全局变量对象压入栈顶</td>
+</tr>
+<tr>
+<td>STORE_FAST</td>
+<td>将栈顶指令存入对应局部变量</td>
+</tr>
+<tr>
+<td>COMPARE_OP</td>
+<td>比较操作符</td>
+</tr>
+<tr>
+<td>CALL_FUNCTION</td>
+<td>调用函数</td>
+</tr>
+<tr>
+<td>BUILD_SLICE</td>
+<td>调用切片，跟的参数为切片的值的个数，一般从上到下为 [Val1:Val2:Val3]</td>
+</tr>
+<tr>
+<td>JUMP_ABSOLUTE</td>
+<td>向下跳转几句操作符，变量为跳转偏移量</td>
+</tr>
+<tr>
+<td>UNARY_POSITIVE</td>
+<td>实现 Val1 = +Val1</td>
+</tr>
+<tr>
+<td>UNARY_NEGATIVE</td>
+<td>实现 Val1 = -Val1</td>
+</tr>
+<tr>
+<td>UNARY_NOT</td>
+<td>实现 Val1 = not Val1</td>
+</tr>
+<tr>
+<td>UNARY_INVERT</td>
+<td>实现 Val1 = ~Val</td>
+</tr>
+<tr>
+<td>FOR_ITER</td>
+<td>for 循环</td>
+</tr>
+<tr>
+<td>GET_ITER</td>
+<td>获取迭代器（一般后面跟循环）</td>
+</tr>
+<tr>
+<td>GET_YIELD_FROM_ITER</td>
+<td>获取 yield 生成器</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>二元操作指令</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BINARY_POWER</td>
+<td>乘方，栈顶数为指数</td>
+</tr>
+<tr>
+<td>BINARY_MULTIPLY</td>
+<td>乘法</td>
+</tr>
+<tr>
+<td>BINARY_MATRIX_MULTIPLY</td>
+<td>矩阵乘法，3.5 引入的新功能</td>
+</tr>
+<tr>
+<td>BINARY_FLOOR_DIVIDE</td>
+<td>除法，结果向下取整</td>
+</tr>
+<tr>
+<td>BINARY_TRUE_DIVIDE</td>
+<td>除法</td>
+</tr>
+<tr>
+<td>BINARY_MODULO</td>
+<td>取余</td>
+</tr>
+<tr>
+<td>BINARY_ADD</td>
+<td>加法</td>
+</tr>
+<tr>
+<td>BINARY_SUBTRACT</td>
+<td>减法</td>
+</tr>
+<tr>
+<td>BINARY_SUBSCR</td>
+<td>数组取下标，栈顶为下标</td>
+</tr>
+<tr>
+<td>BINARY_LSHIFT</td>
+<td>左移操作符（乘2）</td>
+</tr>
+<tr>
+<td>BINARY_RSHIFT</td>
+<td>右移操作符（除2向下取整）</td>
+</tr>
+<tr>
+<td>BINARY_AND</td>
+<td>按位与</td>
+</tr>
+<tr>
+<td>BINARY_XOR</td>
+<td>异或</td>
+</tr>
+<tr>
+<td>BINARY_OR</td>
+<td>按位或</td>
+</tr>
+<tr>
+<td>STORE_SUBSCR</td>
+<td>列表下标存储，例如 Val1[Val2] = Val3</td>
+</tr>
+<tr>
+<td>DELETE_SUBSCR</td>
+<td>按下标删除元素，例如 del Val1[Val2]</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><p>自身操作指令，类似 <code>b += 1</code> ，就是上方有 BINARY 的指令的 BINARY 改成 INPLACE</p>
+</li>
+<li><p>其他指令见<a href="https://docs.python.org/zh-cn/3.6/library/dis.html#python-bytecode-instructions" target="_blank" rel="noopener">官方文档</a></p>
+</li>
+</ul>
+<h1 id="Pyc-文件解析"><a href="#Pyc-文件解析" class="headerlink" title="Pyc 文件解析"></a>Pyc 文件解析</h1><ul>
+<li>Pyc 文件是 PythonCodeObject 对象的持久化保存方式</li>
+<li>有时候会见到 Pyo 文件，这个是经过 Python 解释器优化后生成的字节码<ul>
+<li>这个优化只是缩小了文件的体积，在代码运行速度上和 Pyc 差不多</li>
+</ul>
+</li>
+<li>尤其对于被 import 的文件，Python 解释器为了加快下一次被引用文件的读取速度，都会生成一个对应的 Pyc 文件<ul>
+<li>当后续被 import 的时候，解释器会优先寻找持久化存储的对象</li>
+</ul>
+</li>
+<li>在 Python 源代码运行的时候，Python 解释器会先将代码处理成 PythonCodeObject 对象，保存在内存中处理</li>
+<li><strong>除去预处理 PythonCodeObject 对象的过程，在执行速度上 Pyc 文件、Pyo 文件和源代码文件的速度相差无几</strong></li>
+<li><strong>需要注意的是，Pyc 文件只能运行在生成出此文件的解释器版本上</strong><ul>
+<li><strong>Python 在生成 Pyc 文件的时候也引入了 MagicNumber，来标示此 Pyc 文件对应的版本号</strong></li>
+</ul>
+</li>
+<li>在 Python 解释器目录下 <code>./lib/python3.7/importlib/_bootstrap-external.py</code> 中有明确的版本号记录<ul>
+<li>这里的版本号是解释器字节码更新的版本号</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line"># Magic word to reject .pyc files generated by other Python versions.</span><br><span class="line"># It should change for each incompatible change to the bytecode.</span><br><span class="line">#</span><br><span class="line"># The value of CR and LF is incorporated so if you ever read or write</span><br><span class="line"># a .pyc file in text mode the magic number will be wrong; also, the</span><br><span class="line"># Apple MPW compiler swaps their values, botching string constants.</span><br><span class="line">#</span><br><span class="line"># There were a variety of old schemes for setting the magic number.</span><br><span class="line"># The current working scheme is to increment the previous value by</span><br><span class="line"># 10.</span><br><span class="line">#</span><br><span class="line"># Starting with the adoption of PEP 3147 in Python 3.2, every bump in magic</span><br><span class="line"># number also includes a new &quot;magic tag&quot;, i.e. a human readable string used</span><br><span class="line"># to represent the magic number in __pycache__ directories.  When you change</span><br><span class="line"># the magic number, you must also set a new unique magic tag.  Generally this</span><br><span class="line"># can be named after the Python major version of the magic number bump, but</span><br><span class="line"># it can really be anything, as long as it&#39;s different than anything else</span><br><span class="line"># that&#39;s come before.  The tags are included in the following table, starting</span><br><span class="line"># with Python 3.2a0.</span><br><span class="line">#</span><br><span class="line"># Known values:</span><br><span class="line">#  Python 1.5:   20121</span><br><span class="line">#  Python 1.5.1: 20121</span><br><span class="line">#     Python 1.5.2: 20121</span><br><span class="line">#     Python 1.6:   50428</span><br><span class="line">#     Python 2.0:   50823</span><br><span class="line">#     Python 2.0.1: 50823</span><br><span class="line">#     Python 2.1:   60202</span><br><span class="line">#     Python 2.1.1: 60202</span><br><span class="line">#     Python 2.1.2: 60202</span><br><span class="line">#     Python 2.2:   60717</span><br><span class="line">#     Python 2.3a0: 62011</span><br><span class="line">#     Python 2.3a0: 62021</span><br><span class="line">#     Python 2.3a0: 62011 (!)</span><br><span class="line">#     Python 2.4a0: 62041</span><br><span class="line">#     Python 2.4a3: 62051</span><br><span class="line">#     Python 2.4b1: 62061</span><br><span class="line">#     Python 2.5a0: 62071</span><br><span class="line">#     Python 2.5a0: 62081 (ast-branch)</span><br><span class="line">#     Python 2.5a0: 62091 (with)</span><br><span class="line">#     Python 2.5a0: 62092 (changed WITH_CLEANUP opcode)</span><br><span class="line">#     Python 2.5b3: 62101 (fix wrong code: for x, in ...)</span><br><span class="line">#     Python 2.5b3: 62111 (fix wrong code: x +&#x3D; yield)</span><br><span class="line">#     Python 2.5c1: 62121 (fix wrong lnotab with for loops and</span><br><span class="line">#                          storing constants that should have been removed)</span><br><span class="line">#     Python 2.5c2: 62131 (fix wrong code: for x, in ... in listcomp&#x2F;genexp)</span><br><span class="line">#     Python 2.6a0: 62151 (peephole optimizations and STORE_MAP opcode)</span><br><span class="line">#     Python 2.6a1: 62161 (WITH_CLEANUP optimization)</span><br><span class="line">#     Python 2.7a0: 62171 (optimize list comprehensions&#x2F;change LIST_APPEND)</span><br><span class="line">#     Python 2.7a0: 62181 (optimize conditional branches:</span><br><span class="line">#                          introduce POP_JUMP_IF_FALSE and POP_JUMP_IF_TRUE)</span><br><span class="line">#     Python 2.7a0  62191 (introduce SETUP_WITH)</span><br><span class="line">#     Python 2.7a0  62201 (introduce BUILD_SET)</span><br><span class="line">#     Python 2.7a0  62211 (introduce MAP_ADD and SET_ADD)</span><br><span class="line">#     Python 3000:   3000</span><br><span class="line">#                    3010 (removed UNARY_CONVERT)</span><br><span class="line">#                    3020 (added BUILD_SET)</span><br><span class="line">#                    3030 (added keyword-only parameters)</span><br><span class="line">#                    3040 (added signature annotations)</span><br><span class="line">#                    3050 (print becomes a function)</span><br><span class="line">#                    3060 (PEP 3115 metaclass syntax)</span><br><span class="line">#                    3061 (string literals become unicode)</span><br><span class="line">#                    3071 (PEP 3109 raise changes)</span><br><span class="line">#                    3081 (PEP 3137 make __file__ and __name__ unicode)</span><br><span class="line">#                    3091 (kill str8 interning)</span><br><span class="line">#                    3101 (merge from 2.6a0, see 62151)</span><br><span class="line">#                    3103 (__file__ points to source file)</span><br><span class="line">#     Python 3.0a4: 3111 (WITH_CLEANUP optimization).</span><br><span class="line">#     Python 3.0b1: 3131 (lexical exception stacking, including POP_EXCEPT</span><br><span class="line">                          #3021)</span><br><span class="line">#     Python 3.1a1: 3141 (optimize list, set and dict comprehensions:</span><br><span class="line">#                         change LIST_APPEND and SET_ADD, add MAP_ADD #2183)</span><br><span class="line">#     Python 3.1a1: 3151 (optimize conditional branches:</span><br><span class="line">#                         introduce POP_JUMP_IF_FALSE and POP_JUMP_IF_TRUE</span><br><span class="line">                          #4715)</span><br><span class="line">#     Python 3.2a1: 3160 (add SETUP_WITH #6101)</span><br><span class="line">#                   tag: cpython-32</span><br><span class="line">#     Python 3.2a2: 3170 (add DUP_TOP_TWO, remove DUP_TOPX and ROT_FOUR #9225)</span><br><span class="line">#                   tag: cpython-32</span><br><span class="line">#     Python 3.2a3  3180 (add DELETE_DEREF #4617)</span><br><span class="line">#     Python 3.3a1  3190 (__class__ super closure changed)</span><br><span class="line">#     Python 3.3a1  3200 (PEP 3155 __qualname__ added #13448)</span><br><span class="line">#     Python 3.3a1  3210 (added size modulo 2**32 to the pyc header #13645)</span><br><span class="line">#     Python 3.3a2  3220 (changed PEP 380 implementation #14230)</span><br><span class="line">#     Python 3.3a4  3230 (revert changes to implicit __class__ closure #14857)</span><br><span class="line">#     Python 3.4a1  3250 (evaluate positional default arguments before</span><br><span class="line">#                        keyword-only defaults #16967)</span><br><span class="line">#     Python 3.4a1  3260 (add LOAD_CLASSDEREF; allow locals of class to override</span><br><span class="line">#                        free vars #17853)</span><br><span class="line">#     Python 3.4a1  3270 (various tweaks to the __class__ closure #12370)</span><br><span class="line">#     Python 3.4a1  3280 (remove implicit class argument)</span><br><span class="line">#     Python 3.4a4  3290 (changes to __qualname__ computation #19301)</span><br><span class="line">#     Python 3.4a4  3300 (more changes to __qualname__ computation #19301)</span><br><span class="line">#     Python 3.4rc2 3310 (alter __qualname__ computation #20625)</span><br><span class="line">#     Python 3.5a1  3320 (PEP 465: Matrix multiplication operator #21176)</span><br><span class="line">#     Python 3.5b1  3330 (PEP 448: Additional Unpacking Generalizations #2292)</span><br><span class="line">#     Python 3.5b2  3340 (fix dictionary display evaluation order #11205)</span><br><span class="line">#     Python 3.5b3  3350 (add GET_YIELD_FROM_ITER opcode #24400)</span><br><span class="line">#     Python 3.5.2  3351 (fix BUILD_MAP_UNPACK_WITH_CALL opcode #27286)</span><br><span class="line">#     Python 3.6a0  3360 (add FORMAT_VALUE opcode #25483)</span><br><span class="line">#     Python 3.6a1  3361 (lineno delta of code.co_lnotab becomes signed #26107)</span><br><span class="line">#     Python 3.6a2  3370 (16 bit wordcode #26647)</span><br><span class="line">#     Python 3.6a2  3371 (add BUILD_CONST_KEY_MAP opcode #27140)</span><br><span class="line">#     Python 3.6a2  3372 (MAKE_FUNCTION simplification, remove MAKE_CLOSURE</span><br><span class="line">#                         #27095)</span><br><span class="line">#     Python 3.6b1  3373 (add BUILD_STRING opcode #27078)</span><br><span class="line">#     Python 3.6b1  3375 (add SETUP_ANNOTATIONS and STORE_ANNOTATION opcodes</span><br><span class="line">#                         #27985)</span><br><span class="line">#     Python 3.6b1  3376 (simplify CALL_FUNCTIONs &amp; BUILD_MAP_UNPACK_WITH_CALL</span><br><span class="line">                          #27213)</span><br><span class="line">#     Python 3.6b1  3377 (set __class__ cell from type.__new__ #23722)</span><br><span class="line">#     Python 3.6b2  3378 (add BUILD_TUPLE_UNPACK_WITH_CALL #28257)</span><br><span class="line">#     Python 3.6rc1 3379 (more thorough __class__ validation #23722)</span><br><span class="line">#     Python 3.7a1  3390 (add LOAD_METHOD and CALL_METHOD opcodes #26110)</span><br><span class="line">#     Python 3.7a2  3391 (update GET_AITER #31709)</span><br><span class="line">#     Python 3.7a4  3392 (PEP 552: Deterministic pycs #31650)</span><br><span class="line">#     Python 3.7b1  3393 (remove STORE_ANNOTATION opcode #32550)</span><br><span class="line">#     Python 3.7b5  3394 (restored docstring as the first stmt in the body;</span><br><span class="line">#                         this might affected the first line number #32911)</span><br><span class="line">#</span><br><span class="line"># MAGIC must change whenever the bytecode emitted by the compiler may no</span><br><span class="line"># longer be understood by older implementations of the eval loop (usually</span><br><span class="line"># due to the addition of new opcodes).</span><br><span class="line">#</span><br><span class="line"># Whenever MAGIC_NUMBER is changed, the ranges in the magic_values array</span><br><span class="line"># in PC&#x2F;launcher.c must also be updated.</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对于 pyc 文件整体的 C 结构体，可以在 <code>./include/python2.7/code.h</code> 或不同版本类似的文件中找到<ul>
+<li>具体代码如下</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Bytecode object */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    PyObject_HEAD</span><br><span class="line">    <span class="keyword">int</span> co_argcount;		<span class="comment">/* #arguments, except *args */</span></span><br><span class="line">    <span class="keyword">int</span> co_nlocals;		<span class="comment">/* #local variables */</span></span><br><span class="line">    <span class="keyword">int</span> co_stacksize;		<span class="comment">/* #entries needed for evaluation stack */</span></span><br><span class="line">    <span class="keyword">int</span> co_flags;		<span class="comment">/* CO_..., see below */</span></span><br><span class="line">    PyObject *co_code;		<span class="comment">/* instruction opcodes */</span></span><br><span class="line">    PyObject *co_consts;	<span class="comment">/* list (constants used) */</span></span><br><span class="line">    PyObject *co_names;		<span class="comment">/* list of strings (names used) */</span></span><br><span class="line">    PyObject *co_varnames;	<span class="comment">/* tuple of strings (local variable names) */</span></span><br><span class="line">    PyObject *co_freevars;	<span class="comment">/* tuple of strings (free variable names) */</span></span><br><span class="line">    PyObject *co_cellvars;      <span class="comment">/* tuple of strings (cell variable names) */</span></span><br><span class="line">    <span class="comment">/* The rest doesn't count for hash/cmp */</span></span><br><span class="line">    PyObject *co_filename;	<span class="comment">/* string (where it was loaded from) */</span></span><br><span class="line">    PyObject *co_name;		<span class="comment">/* string (name, for reference) */</span></span><br><span class="line">    <span class="keyword">int</span> co_firstlineno;		<span class="comment">/* first source line number */</span></span><br><span class="line">    PyObject *co_lnotab;	<span class="comment">/* string (encoding addr&lt;-&gt;lineno mapping) See</span></span><br><span class="line"><span class="comment">				   Objects/lnotab_notes.txt for details. */</span></span><br><span class="line">    <span class="keyword">void</span> *co_zombieframe;     <span class="comment">/* for optimization only (see frameobject.c) */</span></span><br><span class="line">    PyObject *co_weakreflist;   <span class="comment">/* to support weakrefs to code objects */</span></span><br><span class="line">&#125; PyCodeObject;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将 Python 源代码生成为 Pyc 文件，这里使用的版本是 Python 2.7.6<ul>
+<li>这里我们将一个名为 <code>py1.py</code> 的文件</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> py_compile</span><br><span class="line">py_compile.compile(<span class="string">'./py1.py'</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>会在源代码文件目录下找到编译后的文件</li>
+<li>使用 010 editor 打开，会提示是否需要安装 pyc 字节码辅助插件，虽然说只支持 2.4 - 2.7<ul>
+<li>Python 3 以后的都不能用…</li>
+</ul>
+</li>
+</ul>
+<p><img src="/" alt="" class="lazyload" data-src="/images/pasted-42.png"></p>
+<ul>
+<li>此处以中南大学2020校赛的一道逆向题目 <a href="https://github.com/CSUAuroraLab/ACTF2020/raw/master/Reverse/%E8%9B%87%E4%B8%8E%E8%8A%B1/release/py%26flower.pyc" target="_blank" rel="noopener">py&amp;flower.pyc</a> 作为介绍，使用 010 editor 打开</li>
+</ul>
+<p><img src="/" alt="" class="lazyload" data-src="/images/pasted-43.png"></p>
+<ul>
+<li><p>最前面的 4 个字节为 Magic Number ，其中前两个直接为解释器的版本号</p>
+<ul>
+<li>此处前两个字节为 62211，也就是 Python 2.7.0a0 版本的字节码解释器</li>
+<li>注意这里是小端序，就是高位在后面，所以是 0xF303</li>
+</ul>
+</li>
+<li><p>Magic Number 之后的四个字节为时间戳，这里是 0x5EC652B0，之后就是 Python 代码对象</p>
+</li>
+<li>代码对象首先一个字节表示此处的对象类型，这里值为 TYPE_CODE，值为 0x63，</li>
+<li>此后四个字节表示参数的个数，也就是 co_argcount 的值</li>
+<li>往后四个字节是局部变量的个数 co_nlocals</li>
+<li>往后四个字节是栈空间大小 co_stacksize</li>
+<li>往后四个字节是 co_flags </li>
+<li>之后就是 co_code 了，也就是编译好的字节码的部分<ul>
+<li>co_code 部分首先的一个字节也是表示此处的对象类型，这里是 TYPE_STRING，为 0x73</li>
+<li>接下来四个字节表示此 co_code 对象的长度，此后就是代码对象，这里的代码长度为 0xA7</li>
+<li>也就是后方 163 个字节的长度都是代码对象</li>
+</ul>
+</li>
+</ul>
+<p><img src="/" alt="" class="lazyload" data-src="/images/pasted-44.png"></p>
+<ul>
+<li>此 co_code 对象的字节码内容结束后，接着是 co_consts 内容，也就是用到的常量的内容<ul>
+<li>最开始是 TYPE_TUPLE，表示这是个元组类型</li>
+<li>此后四个字节是元素个数，这里是 0x23，之后每一个字节与对应的值一组，一共 0x23 组<ul>
+<li>每组中第一个字节表示元素类型，比如 0x69 指 TYPE_INT，此后为对应的值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>后方也对应结构体中的相应内容</li>
+</ul>
+<p><img src="/" alt="" class="lazyload" data-src="/images/pasted-45.png"></p>
+<h1 id="字节码混淆"><a href="#字节码混淆" class="headerlink" title="字节码混淆"></a>字节码混淆</h1><h2 id="Anti-uncompyle6"><a href="#Anti-uncompyle6" class="headerlink" title="Anti-uncompyle6"></a>Anti-uncompyle6</h2><ul>
+<li>对于正常的 pyc 文件，使用 uncompyle6 插件可以正常的进行字节码逆向，得到原来的代码</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; uncompyle6 ./py2.pyc</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果需要使 uncompyle6 失效的话，只要在 co_code 头部加上 <code>0x71 0x03 0x00</code> ，然后把记录 co_code 长度的数据加 3<ul>
+<li>这段字节码指 <code>JUMP_ABSOLUTE 3</code> ，也就是向后跳 3 个字节后继续执行，实际上没有改变代码逻辑</li>
+<li>但是 uncompyle6 插件的还原逻辑就没办法识别此字节码原先的意思，导致解析异常</li>
+</ul>
+</li>
+</ul>
+<h2 id="Anti-dis"><a href="#Anti-dis" class="headerlink" title="Anti-dis"></a>Anti-dis</h2><ul>
+<li>上文的改法会导致 uncompyle6 插件异常，但是这个方法的实质只是增加了一句字节码</li>
+<li>Python 可以借助自带的 dis 库和 marshal 库解析 pyc 二进制文件中的信息，此处以一个简单的代码作为例子</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun1</span><span class="params">()</span>:</span></span><br><span class="line">    enc = <span class="string">"Ua`|&#123;f.4V&#125;$l4h4Vx&#123;s.4|``dg.;;vx&#123;s:v&#125;$l:wz;4h4Dxqugq4&#125;zp&#125;wu`q4`|q4g&#123;afwq4ur`qf4m&#123;af4pqf&#125;bu`&#125;&#123;z"</span></span><br><span class="line">    flag = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> enc:</span><br><span class="line">        flag += chr(ord(i) ^ <span class="number">0x14</span>)</span><br><span class="line">    <span class="keyword">print</span> flag</span><br><span class="line">fun1()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>编译成 pyc 文件后，尝试加入 <code>JUMP_ABSOLUTE 3</code> 到代码头部<ul>
+<li>橙色的字节为编辑过的</li>
+</ul>
+</li>
+</ul>
+<p><img src="/" alt="" class="lazyload" data-src="/images/pasted-46.png"></p>
+<ul>
+<li>使用 uncompyle6 发生 Parse error 异常，但是还是可以正常运行</li>
+</ul>
+<p><img src="/" alt="" class="lazyload" data-src="/images/pasted-47.png"></p>
+<ul>
+<li>尝试使用 marshal 模块搭配 dis 模块进行字节码解析</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> marshal, dis</span><br><span class="line">fp = open(<span class="string">"./py1.pyc"</span>)</span><br><span class="line">fp.read(<span class="number">8</span>) <span class="comment"># Read out magic number and timestamp</span></span><br><span class="line">co_code = marshal.load(fp)</span><br><span class="line">dis.dis(co_code)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>程序输出了完整的字节码，根据字节码还是可以顺利的还原出源代码信息<ul>
+<li>可以发现，头部已经加上了我们自己编辑的 <code>JUMP_ABSOLUTE 3</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; python2 -u <span class="string">"/Users/biox/NutStore/Codes/VSCode/python/py2.py"</span></span><br><span class="line">  1           0 JUMP_ABSOLUTE            3</span><br><span class="line">        &gt;&gt;    3 LOAD_CONST               0 (&lt;code object fun1 at 0x1010486b0, file <span class="string">"./py1.py"</span>, line 1&gt;)</span><br><span class="line">              6 MAKE_FUNCTION            0</span><br><span class="line"></span><br><span class="line">  7           9 STORE_NAME               0 (fun1)</span><br><span class="line">             12 LOAD_NAME                0 (fun1)</span><br><span class="line">             15 CALL_FUNCTION            0</span><br><span class="line">             18 POP_TOP             </span><br><span class="line">             19 LOAD_CONST               1 (None)</span><br><span class="line">             22 RETURN_VALUE</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果我们不想让 dis 顺利的导出字节码，也可以用一些指令来使得 dis 模块产生异常<ul>
+<li>比如来个指令重叠，中间插一个读取数据的字节码<code>0x71 0x04 0x00 0x64 0x71 0x08 0x00 0x00</code></li>
+<li>这里的 <code>0x64</code> 为解释器的 LOAD_CONST 指令，如果正常的话这里应该是 <code>LOAD_CONST 0x0871</code></li>
+<li>那么 dis 模块就看不懂了，实际上通过前面的 <code>0x71 0x04 0x00</code> 会跳过此字节码，实际上是不执行的</li>
+<li>后方的<code>0x71 0x08 0x00</code> 是根据前面第一个 <code>0x71</code> 开始跳转的，所以跟的是 <code>0x08</code></li>
+</ul>
+</li>
+</ul>
+<p><img src="/" alt="" class="lazyload" data-src="/images/pasted-48.png"></p>
+<ul>
+<li>尝试 dis 字节码，直接抛出 IndexError 了，同时 uncompyle6 也 IndexError 了</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; python2 -u <span class="string">"/Users/biox/NutStore/Codes/VSCode/python/py2.py"</span>                                                                        python</span><br><span class="line">  1           0 JUMP_ABSOLUTE            4</span><br><span class="line">              3 LOAD_CONST            2161</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"/Users/biox/NutStore/Codes/VSCode/python/py2.py"</span>, line 5, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    dis.dis(co_code)</span><br><span class="line">  File <span class="string">"/usr/local/Cellar/python@2/2.7.16_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/dis.py"</span>, line 43, <span class="keyword">in</span> dis</span><br><span class="line">    disassemble(x)</span><br><span class="line">  File <span class="string">"/usr/local/Cellar/python@2/2.7.16_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/dis.py"</span>, line 98, <span class="keyword">in</span> disassemble</span><br><span class="line">    <span class="built_in">print</span> <span class="string">'('</span> + repr(co.co_consts[oparg]) + <span class="string">')'</span>,</span><br><span class="line">IndexError: tuple index out of range</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果需要还原成能正常 dis 的 pyc 文件，只能手动修补了</li>
+</ul>
+<h1 id="动态创建内置类型"><a href="#动态创建内置类型" class="headerlink" title="动态创建内置类型"></a>动态创建内置类型</h1><ul>
+<li>Python 还有一个自带的库，叫做 types，借助这个库可以生成 Python 内置的类型</li>
+<li>比如生成 code 对象，这里以 2020 年 XCTF-CyBRICS 逆向 Ployglot 为例，其最后一层逆向的 Python 代码就是用了此方法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> types</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">define_func</span><span class="params">(argcount, nlocals, code, consts, names)</span>:</span></span><br><span class="line">    <span class="comment">#PYTHON3.8!!!</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    fn_code = inner.__code__</span><br><span class="line">    cd_new = types.CodeType(argcount,</span><br><span class="line">                             <span class="number">0</span>,</span><br><span class="line">                             fn_code.co_kwonlyargcount,</span><br><span class="line">                             nlocals,</span><br><span class="line">                             <span class="number">1024</span>,</span><br><span class="line">                             fn_code.co_flags,</span><br><span class="line">                             code,</span><br><span class="line">                             consts,</span><br><span class="line">                             names,</span><br><span class="line">                             tuple([<span class="string">"v%d"</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(nlocals)]),</span><br><span class="line">                             fn_code.co_filename,</span><br><span class="line">                             fn_code.co_name,</span><br><span class="line">                             fn_code.co_firstlineno,</span><br><span class="line">                             fn_code.co_lnotab,</span><br><span class="line">                             fn_code.co_freevars,</span><br><span class="line">                             fn_code.co_cellvars)</span><br><span class="line">    inner.__code__ = cd_new</span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line">f1 = define_func(<span class="number">2</span>,<span class="number">2</span>,<span class="string">b'|\x00|\x01k\x02S\x00'</span>, (<span class="literal">None</span>,), ())</span><br><span class="line">f2 = define_func(<span class="number">1</span>,<span class="number">1</span>,<span class="string">b't\x00|\x00\x83\x01S\x00'</span>, (<span class="literal">None</span>,), (<span class="string">'ord'</span>,))</span><br><span class="line">f3 = define_func(<span class="number">0</span>,<span class="number">0</span>,<span class="string">b't\x00d\x01\x83\x01S\x00'</span>, (<span class="literal">None</span>,  <span class="string">'Give me flag: '</span>), (<span class="string">'input'</span>,))</span><br><span class="line">f4 = define_func(<span class="number">1</span>, <span class="number">3</span>, <span class="string">b'd\x01d\x02d\x03d\x04d\x05d\x01d\x06d\x07d\x08d\td\x03d\nd\x0bd\x0cd\rd\x08d\x0cd\x0ed\x0cd\x0fd\x0ed\x10d\x11d\td\x12d\x03d\x10d\x03d\x0ed\x13d\x0bd\nd\x14d\x08d\x13d\x01d\x01d\nd\td\x01d\x12d\x0bd\x10d\x0fd\x14d\x03d\x0bd\x15d\x16g1&#125;\x01t\x00|\x00\x83\x01t\x00|\x01\x83\x01k\x03r\x82t\x01d\x17\x83\x01\x01\x00d\x18S\x00t\x02|\x00|\x01\x83\x02D\x00]$&#125;\x02t\x03|\x02d\x19\x19\x00t\x04|\x02d\x1a\x19\x00\x83\x01\x83\x02d\x18k\x02r\x8c\x01\x00d\x18S\x00q\x8cd\x1bS\x00'</span>,</span><br><span class="line">                 (<span class="literal">None</span>, <span class="number">99</span>, <span class="number">121</span>, <span class="number">98</span>, <span class="number">114</span>, <span class="number">105</span>, <span class="number">115</span>, <span class="number">123</span>, <span class="number">52</span>, <span class="number">97</span>, <span class="number">100</span>, <span class="number">51</span>, <span class="number">101</span>, <span class="number">55</span>, <span class="number">57</span>, <span class="number">53</span>, <span class="number">54</span>, <span class="number">48</span>, <span class="number">49</span>, <span class="number">50</span>, <span class="number">56</span>, <span class="number">102</span>, <span class="number">125</span>, <span class="string">'Length mismatch!'</span>, <span class="literal">False</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="literal">True</span>),</span><br><span class="line">                 (<span class="string">'len'</span>, <span class="string">'print'</span>, <span class="string">'zip'</span>, <span class="string">'f1'</span>, <span class="string">'f2'</span>))</span><br><span class="line">f5 = define_func(<span class="number">0</span>, <span class="number">1</span>,<span class="string">b't\x00\x83\x00&#125;\x00t\x01|\x00\x83\x01d\x01k\x08r\x1ct\x02d\x02\x83\x01\x01\x00n\x08t\x02d\x03\x83\x01\x01\x00d\x00S\x00'</span>,(<span class="literal">None</span>, <span class="literal">False</span>, <span class="string">'Nope!'</span>, <span class="string">'Yep!'</span>), (<span class="string">'f3'</span>, <span class="string">'f4'</span>, <span class="string">'print'</span>))</span><br><span class="line">f5()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用给定的字节码，构造 CodeType 对象，直接转换成函数来调用</li>
+<li>只要把对应的 PyCodeObject 中应该有的值构造正确，就能顺利执行</li>
+<li>这样的函数如果没加花指令，是可以直接 dis 出来的</li>
+</ul>
+<blockquote>
+<p>  如有错误，欢迎师傅们指正</p>
+</blockquote>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:bi0x@foxmail.com">Bi0x</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://blog.bi0x.cn/2020/07/28/Python-%E5%AD%97%E8%8A%82%E7%A0%81%E4%B8%8E%E5%AD%97%E8%8A%82%E7%A0%81%E6%B7%B7%E6%B7%86/">http://blog.bi0x.cn/2020/07/28/Python-%E5%AD%97%E8%8A%82%E7%A0%81%E4%B8%8E%E5%AD%97%E8%8A%82%E7%A0%81%E6%B7%B7%E6%B7%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.bi0x.cn" target="_blank">Bi0x</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Re/">Re    </a></div><div class="post_share"><div class="social-share" data-image="/images/pasted-41.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/wechat.jpg" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/alipay.jpg" alt="支付宝"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="next-post pull-full"><a href="/2020/04/25/wp-dasctf202004/"><img class="next_cover lazyload" data-src="/images/pasted-41.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">0x02 - 2020安恒4月月赛记录</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/04/02/reverse1/" title="逆...逆不出来了"><img class="relatedPosts_cover lazyload"data-src="/images/pasted-36.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-04-02</div><div class="relatedPosts_title">逆...逆不出来了</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: false,
+  verify: false,
+  appId: 'J91TT6tmiySm3lUixVOE4CbJ-gzGzoHsz',
+  appKey: 'MidtPXnwEq70NCNqga98erKe',
+  placeholder: 'Please leave your footprints',
+  avatar: 'monsterid',
+  meta: guest_info,
+  pageSize: '10',
+  lang: 'zh-cn',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By Bi0x</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="footer_custom_text">到这里结束了呢</div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/third-party/click_heart.js"></script><script>if (document.getElementsByClassName('mermaid').length) {
+  loadScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js',function () {
+    mermaid.initialize({
+      theme: 'default',
+  })
+})
+}</script></body></html>

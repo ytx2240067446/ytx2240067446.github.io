@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.bi0x.cn/"/>
-  <updated>2020-04-25T11:40:11.894Z</updated>
+  <updated>2020-07-28T12:54:15.327Z</updated>
   <id>http://blog.bi0x.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python 字节码与字节码混淆</title>
+    <link href="http://blog.bi0x.cn/2020/07/28/Python-%E5%AD%97%E8%8A%82%E7%A0%81%E4%B8%8E%E5%AD%97%E8%8A%82%E7%A0%81%E6%B7%B7%E6%B7%86/"/>
+    <id>http://blog.bi0x.cn/2020/07/28/Python-%E5%AD%97%E8%8A%82%E7%A0%81%E4%B8%8E%E5%AD%97%E8%8A%82%E7%A0%81%E6%B7%B7%E6%B7%86/</id>
+    <published>2020-07-28T12:44:00.000Z</published>
+    <updated>2020-07-28T12:54:15.327Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Python-字节码&quot;&gt;&lt;a href=&quot;#Python-字节码&quot; class=&quot;headerlink&quot; title=&quot;Python 字节码&quot;&gt;&lt;/a&gt;Python 字节码&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;虽然 Python
+        
+      
+    
+    </summary>
+    
+    
+      <category term="CTF" scheme="http://blog.bi0x.cn/categories/CTF/"/>
+    
+    
+      <category term="Re" scheme="http://blog.bi0x.cn/tags/Re/"/>
+    
+  </entry>
   
   <entry>
     <title>0x02 - 2020安恒4月月赛记录</title>
