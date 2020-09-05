@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.bi0x.cn/"/>
-  <updated>2020-07-28T12:54:15.327Z</updated>
+  <updated>2020-09-05T07:02:49.656Z</updated>
   <id>http://blog.bi0x.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>209琐事 </title>
+    <link href="http://blog.bi0x.cn/2020/09/05/209-202009/"/>
+    <id>http://blog.bi0x.cn/2020/09/05/209-202009/</id>
+    <published>2020-09-05T05:45:30.000Z</published>
+    <updated>2020-09-05T07:02:49.656Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;学校机房老搞笑了，交换机坏了彭哥说找机房总负责人，机房总负责人说网络办会修&lt;/li&gt;
+&lt;li&gt;网络办的说他们不会修，要找机房总负责人，机房总负责人也说不会修&lt;/li&gt;
+&lt;li&gt;不过最后自己鼓捣鼓捣就能用了&lt;/li&gt;
+&lt;li&gt;网络办的人后来来了，帮忙测了机房的网口
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Python 字节码与字节码混淆</title>
