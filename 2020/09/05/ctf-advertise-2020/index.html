@@ -1,0 +1,283 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CTF 集训队招新 | Bi0x</title><meta name="description" content="CTF 集训队招新"><meta name="author" content="Bi0x,bi0x@foxmail.com"><meta name="copyright" content="Bi0x"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon1.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="CTF 集训队招新"><meta name="twitter:description" content="CTF 集训队招新"><meta name="twitter:image" content="http://blog.bi0x.cn/images/pasted-57.png"><meta property="og:type" content="article"><meta property="og:title" content="CTF 集训队招新"><meta property="og:url" content="http://blog.bi0x.cn/2020/09/05/ctf-advertise-2020/"><meta property="og:site_name" content="Bi0x"><meta property="og:description" content="CTF 集训队招新"><meta property="og:image" content="http://blog.bi0x.cn/images/pasted-57.png"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      now = new Date();
+      hour = now.getHours();
+      isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><link rel="canonical" href="http://blog.bi0x.cn/2020/09/05/ctf-advertise-2020/"><link rel="next" title="209琐事 " href="http://blog.bi0x.cn/2020/09/05/209-202009/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://blog.bi0x.cn/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    title: 'Snackbar.bookmark.title',
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: {"bookmark":{"title":"Snackbar.bookmark.title","message_prev":"按","message_next":"键将本页加入书签"},"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-left"},
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: false,
+  isFontAwesomeV5: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false
+}</script><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Bi0x" type="application/atom+xml">
+</head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">11</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">5</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 小伙伴</span></a></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CTF-集训队招新"><span class="toc-number">1.</span> <span class="toc-text">CTF 集训队招新</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概要"><span class="toc-number">1.1.</span> <span class="toc-text">概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#学科竞赛"><span class="toc-number">1.2.</span> <span class="toc-text">学科竞赛</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#详细介绍"><span class="toc-number">1.3.</span> <span class="toc-text">详细介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#入队标准"><span class="toc-number">1.4.</span> <span class="toc-text">入队标准</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#学习指南"><span class="toc-number">1.5.</span> <span class="toc-text">学习指南</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#联系方式"><span class="toc-number">1.6.</span> <span class="toc-text">联系方式</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(/images/pasted-57.png)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">Bi0x</a></span><span class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 小伙伴</span></a></div></div></span></div><div id="post-info"><div id="post-title"><div class="posttitle">CTF 集训队招新</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2020-09-05<span class="post-meta__separator">|</span><i class="fa fa-history" aria-hidden="true"></i> 更新于 2020-09-06</time><div class="post-meta-wordcount"><i class="post-meta__icon fa fa-file-word-o" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">1.8k</span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-clock-o" aria-hidden="true"></i><span>阅读时长: 5 分钟</span><div class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="/2020/09/05/ctf-advertise-2020/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2020/09/05/ctf-advertise-2020/" itemprop="commentCount"></span></a></div></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><p><img src="/" alt="CGN（CTF Group Network）对集训队的评分" class="lazyload" data-src="/images/pasted-57.png"></p>
+<p><img src="/" alt="集训队 Logo" class="lazyload" data-src="/images/pasted-58.png"></p>
+<h1 id="CTF-集训队招新"><a href="#CTF-集训队招新" class="headerlink" title="CTF 集训队招新"></a>CTF 集训队招新</h1><ul>
+<li><p>这是一则非正式的宣传，秉持我没有，我不是，我没干过的态度，因此请勿过度解读</p>
+</li>
+<li><p>有疑问的朋友可以在底下评论区留言</p>
+</li>
+</ul>
+<h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><font color="darkgreen">
+
+<strong>+ 有趣的技术交流</strong><br>
+<strong>+ 独立实验室座位</strong><br>
+<strong>+ 高配实验室电脑</strong><br>
+<strong>+ 奖金与绩点加成</strong><br>
+<strong>+ 有趣的课外知识</strong><br>
+<strong>+ 公费旅游的机会</strong><br>
+<strong>+ 衔接就业的能力</strong><br>
+<strong>+ 赚零花钱的方法</strong><br>
+
+</font>
+
+<p><br></p>
+<font color="red">
+
+<strong>- 注意好遵纪守法</strong><br>
+<strong>- 注意好遵纪守法</strong><br>
+<strong>- 注意好遵纪守法</strong><br>
+<strong>- 需要兴趣的驱动</strong><br>
+<strong>- 课余时间的减少</strong><br>
+
+</font>
+
+
+<h2 id="学科竞赛"><a href="#学科竞赛" class="headerlink" title="学科竞赛"></a>学科竞赛</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>竞赛名称</th>
+<th>竞赛类别</th>
+<th>能力加分</th>
+<th>绩点加成</th>
+<th>钱包加成</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>校赛</td>
+<td>校级 A 类</td>
+<td>10/8/5</td>
+<td>无</td>
+<td>有奖品</td>
+<td>个人赛，全校学生都可以参加</td>
+</tr>
+<tr>
+<td>省赛</td>
+<td>省级 A 类</td>
+<td>20/15/10</td>
+<td>1.0/0.8/0.5</td>
+<td>有奖金</td>
+<td>团队赛，集训队内竞争名额</td>
+</tr>
+<tr>
+<td>国赛</td>
+<td>国家级 A 类</td>
+<td>30/25/20</td>
+<td>1.5/1.2/1.0</td>
+<td>有奖金</td>
+<td>团队赛，与整个赛区竞争名额</td>
+</tr>
+<tr>
+<td>网鼎杯</td>
+<td>国家级</td>
+<td>要打折扣</td>
+<td>无</td>
+<td>获奖后3W起步</td>
+<td>团队赛，全国竞争名额</td>
+</tr>
+<tr>
+<td>强网杯</td>
+<td>国家级</td>
+<td>要打折扣</td>
+<td>无</td>
+<td>获奖后1W起步</td>
+<td>团队赛，全国竞争名额</td>
+</tr>
+<tr>
+<td>红帽杯</td>
+<td>国家级</td>
+<td>要打折扣</td>
+<td>无</td>
+<td>获奖后5k起步</td>
+<td>团队赛，全国竞争名额</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>其他奖金小几千块的比赛就不写了😏</li>
+</ul>
+<h2 id="详细介绍"><a href="#详细介绍" class="headerlink" title="详细介绍"></a>详细介绍</h2><ul>
+<li>CTF 集训队位于 20 幢的 209 机房。</li>
+<li>集训队内可以接触到非常多课堂上从不涉及的知识点，而且都相对的有趣。</li>
+<li>集训队的队员们都非常的有趣，同时也很好相处。集训队的大家在竞赛之余也保持较高的绩点，伴随着竞赛的获奖也都能在班上名列前茅。</li>
+<li>有许多常驻机房的朋友，大家平时都会在机房吹吹逼，有时候还会整点活，搞搞聚餐，搞搞Hack（指合法的网络活动）啥的。</li>
+<li>如果你对<font color=red><strong>网络攻防</strong></font>的手段充满兴趣，有像《看门狗》中艾登那般所有信息手到擒来的梦想，或者从小就对所谓的“黑客”非常热衷，那么请加入我们。在自学的同时，机房的朋友们还会<strong>手把手教你</strong>各种各样的攻防方法，不用担心学习上遇到困难。</li>
+<li>CTF 的比赛分为两种形式<ul>
+<li>夺旗赛，一般存在于比赛的初赛和部分决赛中，以<font color=red><strong>攻击主办方提供的服务器以及破解文件</strong></font>为主，攻击成功后获取服务器或文件中关键的 flag 信息，提交后即可得分，主办方会在全场公布每道题目的一血、二血、三血信息。</li>
+<li>AWD，存在于部分比赛的决赛中，主办方会给所有队伍提供服务器组，每支队伍的每台服务器运行着不同的服务，<font color=red><strong>队伍需要修复自己队伍的漏洞的同时还要利用漏洞攻击其他队伍的服务器</strong></font>，攻击成功后会从其他队伍获取分数，主办方会在大屏幕上实时播送攻击信息。</li>
+</ul>
+</li>
+<li>另外，信息安全目前的人才缺口较大，同时又是较为热门的行业，且专业平均收入位列第一，有很大的发展空间。只要跟上集训队的脚步，<font color=red><strong>就业</strong></font>方面自然不必太过担心；在奖项的加持下，<font color=red><strong>保研</strong></font>也是非常有优势的。</li>
+</ul>
+<p><img src="/" alt="" class="lazyload" data-src="/images/pasted-59.png"></p>
+<ul>
+<li><p>虽说周末以及暑假需要在集训上牺牲掉一部分的时间，但是由于我们崇尚自由的精神，因此<font color=red><strong>占用大家的时间不会过长</strong></font>，如果不是有比赛需要参加，一般周末只会占用大家半天到一天的时间，暑假是两周的时间。</p>
+</li>
+<li><p>我们并不是历史悠久的集训队，虽然已有省奖，国奖乃至某杯赛的冠军，但是集训队的整体实力还需要成员们的共同努力才能稳步提升。</p>
+</li>
+<li><p>集训队也是需要共同进步的，给足福利的同时也要保证能力与进取的态度，因此集训队会通过定期比赛的形式对队内成员进行筛选审核，对于能力欠佳又没有明显努力的人予以劝退，因此即使有兴趣，也请保持活力呢😀。</p>
+</li>
+</ul>
+<h2 id="入队标准"><a href="#入队标准" class="headerlink" title="入队标准"></a>入队标准</h2><ul>
+<li>人数将根据大家的刷题情况及校赛的比赛情况决定，人数每年大概在12人左右，主要面向大一。</li>
+<li>校赛的举办时间为下半学期 4 月到 5 月之间，希望大家能够学好至少一门编程语言。</li>
+<li>也就是在校赛之前需要在我们学校的平台（<a href="http://zjnuctf.bi0x.cn/" target="_blank" rel="noopener">http://zjnuctf.bi0x.cn/</a>) 上<font color=red><strong>刷到足够的题目（暂定至少50题），同时在校赛有靠前的名次</strong></font>。</li>
+<li>我们所希望选拔的同学在对信息安全充满兴趣外，能够保持毅力，能够与前辈们互相尊重，也愿意花足够的时间在 CTF 相关的知识上学习。</li>
+<li>我们将会在校赛前几周安排相关内容的公开讲座，内容与校赛有关，感兴趣的同学届时可前来学习。</li>
+</ul>
+<h2 id="学习指南"><a href="#学习指南" class="headerlink" title="学习指南"></a>学习指南</h2><ul>
+<li><font color=red><strong>强烈建议先学习 Python</strong></font>，然后去 CTF wiki（<a href="https://ctf-wiki.github.io/ctf-wiki/）" target="_blank" rel="noopener">https://ctf-wiki.github.io/ctf-wiki/）</a> 上学习相关的内容，建议是伴随刷题一步步的学习，通过 CSDN 也是可以的，当然看 CTF 相关的书也行，比如《CTF特训营》等。</li>
+<li>我们的平台：<a href="http://zjnuctf.bi0x.cn/" target="_blank" rel="noopener">http://zjnuctf.bi0x.cn/</a><ul>
+<li>我们的训练平台于今年 8 月才搭建完成，所以题量可能不多，题目的难度分级可能不够平滑，完成 50 题可能需要一定的学习，我们平台的题目也会不断的上新。由于有原创题，因此可能很难搜到部分题目的题解，需要靠自己的能力。</li>
+</ul>
+</li>
+<li>这里推荐一些其他的刷题平台</li>
+<li>攻防世界：<a href="https://adworld.xctf.org.cn/task" target="_blank" rel="noopener">https://adworld.xctf.org.cn/task</a><ul>
+<li>此平台新手区相对面向新人，大部分题目都有提供题解，非常适合入门。同时此平台会承办 XCTF 联赛，由于此比赛属于国际赛，抖 m 的同学可以去试试，相对比大部分比赛都要难。</li>
+</ul>
+</li>
+<li>BUUOJ：<a href="https://buuoj.cn/" target="_blank" rel="noopener">https://buuoj.cn/</a><ul>
+<li>此平台收录了很多国内比赛的题目，虽说是别的学校的 OJ 平台，但是目前已大众化。该平台做的人较多，题目的难易程度会按照解题人数数量进行排行，因此难度等级较为平滑，简单的题目在百度上有对应的题解，非常适合入门。</li>
+</ul>
+</li>
+<li>Bugku：<a href="https://ctf.bugku.com/challenges" target="_blank" rel="noopener">https://ctf.bugku.com/challenges</a><ul>
+<li>题目比较多但是比较零碎，平台最近好像在更新，访问较慢，题目难度也是按照解题人数排行的，有兴趣的可以做做。</li>
+</ul>
+</li>
+</ul>
+<h2 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h2><ul>
+<li>彭老师（指导老师）：99707622</li>
+<li>蓝小俊（老队长）：1208418784</li>
+<li>Peco（会长）：534339741</li>
+<li>飞机（队长）：2240067446</li>
+<li>菊仙（神）：1275178869</li>
+<li>66（Pwn学姐）：344064331</li>
+<li>Niyah（全栈）：1822343744</li>
+<li>bmth（Web冠军）：895016448</li>
+</ul>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:bi0x@foxmail.com">Bi0x</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://blog.bi0x.cn/2020/09/05/ctf-advertise-2020/">http://blog.bi0x.cn/2020/09/05/ctf-advertise-2020/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.bi0x.cn" target="_blank">Bi0x</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/images/pasted-55.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/wechat.jpg" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/alipay.jpg" alt="支付宝"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="next-post pull-full"><a href="/2020/09/05/209-202009/"><img class="next_cover lazyload" data-src="/images/pasted-55.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">209琐事 </div></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: false,
+  verify: false,
+  appId: 'J91TT6tmiySm3lUixVOE4CbJ-gzGzoHsz',
+  appKey: 'MidtPXnwEq70NCNqga98erKe',
+  placeholder: 'Please leave your footprints',
+  avatar: 'monsterid',
+  meta: guest_info,
+  pageSize: '10',
+  lang: 'zh-cn',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By Bi0x</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="footer_custom_text">到这里结束了呢</div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/third-party/click_heart.js"></script><script>if (document.getElementsByClassName('mermaid').length) {
+  loadScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js',function () {
+    mermaid.initialize({
+      theme: 'default',
+  })
+})
+}</script></body></html>
