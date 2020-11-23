@@ -168,33 +168,6 @@
   </entry>
   
   <entry>
-    <title>逆...逆不出来了</title>
-    <link href="http://blog.bi0x.cn/2020/04/02/reverse1/"/>
-    <id>http://blog.bi0x.cn/2020/04/02/reverse1/</id>
-    <published>2020-04-02T15:44:00.000Z</published>
-    <updated>2020-04-13T02:17:21.731Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;基础知识&quot;&gt;&lt;a href=&quot;#基础知识&quot; class=&quot;headerlink&quot; title=&quot;基础知识&quot;&gt;&lt;/a&gt;基础知识&lt;/h1&gt;&lt;h2 id=&quot;字符编码&quot;&gt;&lt;a href=&quot;#字符编码&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="CTF" scheme="http://blog.bi0x.cn/categories/CTF/"/>
-    
-    
-      <category term="Re" scheme="http://blog.bi0x.cn/tags/Re/"/>
-    
-  </entry>
-  
-  <entry>
     <title>各种栈溢出</title>
     <link href="http://blog.bi0x.cn/2020/03/31/stack-overflow/"/>
     <id>http://blog.bi0x.cn/2020/03/31/stack-overflow/</id>
