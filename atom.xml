@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.bi0x.cn/"/>
-  <updated>2020-09-05T07:05:02.919Z</updated>
+  <updated>2020-11-24T01:51:13.303Z</updated>
   <id>http://blog.bi0x.cn/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>babyheap_0ctf_2017 详解</title>
+    <link href="http://blog.bi0x.cn/2020/11/24/babyheap-0ctf-2017/"/>
+    <id>http://blog.bi0x.cn/2020/11/24/babyheap-0ctf-2017/</id>
+    <published>2020-11-24T01:38:34.000Z</published>
+    <updated>2020-11-24T01:51:13.303Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;题目地址: &lt;a href=&quot;https://buuoj.cn/challenges#babyheap_0ctf_2017&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Python 字节码与字节码混淆</title>
