@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.bi0x.cn/"/>
-  <updated>2020-11-24T01:51:13.303Z</updated>
+  <updated>2020-11-24T02:01:52.579Z</updated>
   <id>http://blog.bi0x.cn/</id>
   
   <author>
@@ -20,8 +20,8 @@
     <title>babyheap_0ctf_2017 详解</title>
     <link href="http://blog.bi0x.cn/2020/11/24/babyheap-0ctf-2017/"/>
     <id>http://blog.bi0x.cn/2020/11/24/babyheap-0ctf-2017/</id>
-    <published>2020-11-24T01:38:34.000Z</published>
-    <updated>2020-11-24T01:51:13.303Z</updated>
+    <published>2020-11-24T01:38:00.000Z</published>
+    <updated>2020-11-24T02:01:52.579Z</updated>
     
     <summary type="html">
     
@@ -37,6 +37,10 @@
     </summary>
     
     
+      <category term="CTF" scheme="http://blog.bi0x.cn/categories/CTF/"/>
+    
+    
+      <category term="Pwn" scheme="http://blog.bi0x.cn/tags/Pwn/"/>
     
   </entry>
   
